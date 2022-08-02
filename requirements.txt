@@ -1,0 +1,5 @@
+httpx[http2]
+PyInquirer
+revolution
+tqdm
+win32_setctime
