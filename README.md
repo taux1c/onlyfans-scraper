@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/Amenly/onlyfans-scraper/main/media/icon.png" width="100" align="right">
+<img src="https://raw.githubusercontent.com/taux1c/onlyfans-scraper/main/media/icon.png" width="100" align="right">
 
 # onlyfans-scraper
 
@@ -6,7 +6,7 @@
 
 A command-line program to download media, like and unlike posts, and more from creators on OnlyFans.
 
-<img src="https://raw.githubusercontent.com/Amenly/onlyfans-scraper/main/media/example.png" width="550">
+<img src="https://raw.githubusercontent.com/taux1c/onlyfans-scraper/main/media/example.png" width="550">
 
 ## Installation
 
@@ -63,27 +63,27 @@ Go to your [notification area](https://onlyfans.com/my/notifications) on OnlyFan
 
 Once you have your browser's developer tools open, your screen should look like the following:
 
-<img src="https://raw.githubusercontent.com/Amenly/onlyfans-scraper/main/media/browser_tools_open.png">
+<img src="https://raw.githubusercontent.com/taux1c/onlyfans-scraper/main/media/browser_tools_open.png">
 
 Click on the `Network` tab at the top of the browser tools:
 
-<img src="https://raw.githubusercontent.com/Amenly/onlyfans-scraper/main/media/network_tab.png">
+<img src="https://raw.githubusercontent.com/taux1c/onlyfans-scraper/main/media/network_tab.png">
 
 Then click on `XHR` sub-tab inside of the `Network` tab:
 
-<img src="https://raw.githubusercontent.com/Amenly/onlyfans-scraper/main/media/xhr_tab.png">
+<img src="https://raw.githubusercontent.com/taux1c/onlyfans-scraper/main/media/xhr_tab.png">
 
 Once you're inside of the `XHR` sub-tab, refresh the page while you have your browser's developer tools open. After the page reloads, you should see a section titled `init` appear:
 
-<img src="https://raw.githubusercontent.com/Amenly/onlyfans-scraper/main/media/init.png">
+<img src="https://raw.githubusercontent.com/taux1c/onlyfans-scraper/main/media/init.png">
 
 When you click on `init`, you should see a large sidebar appear. Make sure you're in the `Headers` section:
 
-<img src="https://raw.githubusercontent.com/Amenly/onlyfans-scraper/main/media/headers.png">
+<img src="https://raw.githubusercontent.com/taux1c/onlyfans-scraper/main/media/headers.png">
 
 After that, scroll down until you see a subsection called `Request Headers`. You should then see three important fields inside of the `Request Headers` subsection: `Cookie`, `User-Agent`, and `x-bc`
 
-<img src="https://raw.githubusercontent.com/Amenly/onlyfans-scraper/main/media/request_headers.png">
+<img src="https://raw.githubusercontent.com/taux1c/onlyfans-scraper/main/media/request_headers.png">
 
 Inside of the `Cookie` field, you will see a couple of important bits:
 
@@ -118,11 +118,11 @@ That's it. It's that simple.
 
 You will need to use your arrow keys to select an option:
 
-<img src="https://raw.githubusercontent.com/Amenly/onlyfans-scraper/main/media/main_menu.png" width="450">
+<img src="https://raw.githubusercontent.com/taux1c/onlyfans-scraper/main/media/main_menu.png" width="450">
 
 If you choose to download content, you will have three options: having a list of all of your subscriptions printed, manually entering a username, or scraping *all* accounts that you're subscribed to.
 
-<img src="https://raw.githubusercontent.com/Amenly/onlyfans-scraper/main/media/list_or_username.png" width="550">
+<img src="https://raw.githubusercontent.com/taux1c/onlyfans-scraper/main/media/list_or_username.png" width="550">
 
 ### Liking/Unliking Posts
 
@@ -158,6 +158,6 @@ Then the path you enter should be `/Users/home/.sites/OnlyFans/melodyjai/Metadat
 
 ## Bugs/Issues/Suggestions
 
-If you run into any trouble while using this script, or if you're confused on how to get something running, feel free to [open an issue](https://github.com/Amenly/onlyfans-scraper/issues/new) or [open a discussion](https://github.com/Amenly/onlyfans-scraper/discussions/new). I don't bite :D
+If you run into any trouble while using this script, or if you're confused on how to get something running, feel free to [open an issue](https://github.com/taux1c/onlyfans-scraper/issues/new) or [open a discussion](https://github.com/taux1c/onlyfans-scraper/discussions/new). I don't bite :D
 
-If you would like a feature added to the program or have some ideas, [start a discussion](https://github.com/Amenly/onlyfans-scraper/discussions/new)!
+If you would like a feature added to the program or have some ideas, [start a discussion](https://github.com/taux1c/onlyfans-scraper/discussions/new)!
