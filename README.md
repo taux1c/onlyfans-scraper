@@ -1,3 +1,5 @@
+I CURRENTLY DO NOT HAVE ACCESS TO THE PYPI LIBRARY SO THIS HAS NOT BEEN UPDATED. I WILL WORK ON GETTING THIS REPO UPLOADED TO PYPI.
+
 <img src="https://raw.githubusercontent.com/taux1c/onlyfans-scraper/main/media/icon.png" width="100" align="right">
 
 # onlyfans-scraper
