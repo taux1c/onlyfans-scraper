@@ -10,6 +10,7 @@ r"""
 import argparse
 import asyncio
 import os
+import sys
 import platform
 
 from .api import init, highlights, me, messages, posts, profile, subscriptions
@@ -325,7 +326,10 @@ def main():
     if args.username:
         pass
 
-    process_prompts()
+    try:
+        process_prompts()
+    except KeyboardInterrupt:
+        sys.exit(1)
 
 
 if __name__ == '__main__':
