@@ -1,5 +1,5 @@
 httpx[http2]
-PyInquirer
+InquirerPy
 revolution
 tqdm
 win32_setctime

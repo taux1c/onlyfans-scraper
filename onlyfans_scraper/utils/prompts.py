@@ -9,7 +9,8 @@ r"""
 
 import re
 
-from PyInquirer import prompt, Separator
+from InquirerPy.resolver import prompt
+from InquirerPy.separator import Separator
 
 from ..constants import mainPromptChoices, usernameOrListChoices, profilesPromptChoices
 
