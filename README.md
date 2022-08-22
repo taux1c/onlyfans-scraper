@@ -1,4 +1,4 @@
-I CURRENTLY DO NOT HAVE ACCESS TO THE PYPI LIBRARY SO THIS HAS NOT BEEN UPDATED on pypi (pip). I WILL WORK ON GETTING THIS REPO UPLOADED TO PYPI.
+PIP INSTALL OPTION LISTED BELOW AND PIP INSTALL OPTION COMING SOON!
 
 <img src="https://raw.githubusercontent.com/taux1c/onlyfans-scraper/main/media/icon.png" width="100" align="right">
 
