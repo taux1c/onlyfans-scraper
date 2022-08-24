@@ -11,6 +11,7 @@ import re
 
 from InquirerPy.resolver import prompt
 from InquirerPy.separator import Separator
+from InquirerPy.base import Choice
 
 from ..constants import mainPromptChoices, usernameOrListChoices, profilesPromptChoices
 
@@ -91,22 +92,11 @@ def areas_prompt() -> list:
             'name': name,
             'message': 'Which area(s) would you like to scrape? (Press ENTER to continue)',
             'choices': [
-                {
-                    'name': 'All',
-                    'checked': True
-                },
-                {
-                    'name': 'Timeline'
-                },
-                {
-                    'name': 'Archived'
-                },
-                {
-                    'name': 'Highlights'
-                },
-                {
-                    'name': 'Messages'
-                }
+                Choice('All', enabled=True),
+                Choice('Timeline'),
+                Choice('Archived'),
+                Choice('Highlights'),
+                Choice('Messages'),
             ]
         }
     ]
