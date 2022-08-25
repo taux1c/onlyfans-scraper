@@ -36,7 +36,7 @@ def scrape_highlights(headers, user_id) -> list:
 
 
 def parse_highlights(highlights: list) -> list:
-    if not highlights:
+    if not highlights['hasMore']:
         return []
 
     highlight_ids = [highlight['id'] for highlight in highlights.get("data")]
