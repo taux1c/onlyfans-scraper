@@ -2,7 +2,7 @@
 
 # onlyfans-scraper
 
-![version](https://img.shields.io/pypi/v/onlyfans-scraper) ![python3.8-3.9](https://img.shields.io/pypi/pyversions/onlyfans-scraper) ![downloads](https://img.shields.io/pypi/dm/onlyfans-scraper)
+
 
 A command-line program to download media, like and unlike posts, and more from creators on OnlyFans.
 
@@ -10,25 +10,16 @@ A command-line program to download media, like and unlike posts, and more from c
 
 ## Installation
 
-Windows:
-```
-pip install onlyfans-scraper
-```
-or 
+Windows: 
+
 ```
 pip install git+https://github.com/taux1c/onlyfans-scraper
 ```
 
 If you're on macOS/Linux, then do this instead:
 
-
 ```
 pip3 install git+https://github.com/taux1c/onlyfans-scraper
-```
-or
-
-```
-pip3 install onlyfans-scraper
 ```
 
 ## Setup
