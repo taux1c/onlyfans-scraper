@@ -6,7 +6,7 @@ r"""
  \___/ |_| |_||_| \__, ||_|   \__,_||_| |_||___/       |___/ \___||_|    \__,_|| .__/  \___||_|   
                   |___/                                                        |_|                
 """
-
+preferences = 'pref_config.py'
 configPath = '.config/onlyfans-scraper'
 configFile = 'config.json'
 authFile = 'auth.json'

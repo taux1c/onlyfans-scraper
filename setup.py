@@ -45,7 +45,7 @@ setuptools.setup(
     license=about['__license__'],
     packages=setuptools.find_packages(),
     classifiers=classifiers,
-    keywords=['onlyfans', 'download', 'photos', 'videos', 'like'],
+    keywords=['onlyfans', 'download', 'photos', 'videos', 'like', 'scraper', 'scraping', 'scraper'],
     install_requires=requirements,
     python_requires=">=3.8",
     zip_safe=False,
@@ -53,6 +53,6 @@ setuptools.setup(
         'console_scripts': ['onlyfans-scraper=onlyfans_scraper.scraper:main']
     },
     project_urls={
-        'Source': 'https://github.com/Amenly/onlyfans-scraper'
+        'Source': 'https://github.com/taux1c/onlyfans-scraper'
     }
 )

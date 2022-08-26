@@ -12,16 +12,25 @@ A command-line program to download media, like and unlike posts, and more from c
 
 ## Installation
 
-While the `pypi` package is not updated, you can install this program by entering the following in your terminal:
-
+Windows:
+```
+pip install onlyfans-scraper
+```
+or 
 ```
 pip install git+https://github.com/taux1c/onlyfans-scraper
 ```
 
 If you're on macOS/Linux, then do this instead:
 
+
 ```
 pip3 install git+https://github.com/taux1c/onlyfans-scraper
+```
+or
+
+```
+pip3 install onlyfans-scraper
 ```
 
 ## Setup
