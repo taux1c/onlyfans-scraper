@@ -1,3 +1,5 @@
+Discord Server: https://discord.gg/vx7hy8CqcP
+
 <img src="https://raw.githubusercontent.com/taux1c/onlyfans-scraper/main/media/icon.png" width="100" align="right">
 
 # onlyfans-scraper
