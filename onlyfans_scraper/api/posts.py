@@ -12,7 +12,7 @@ import httpx
 from ..constants import (
     timelineEP, timelineNextEP,
     timelinePinnedEP,
-    archivedEP, archivedNextEP, debug
+    archivedEP, archivedNextEP
 )
 from ..utils import auth
 
@@ -70,16 +70,6 @@ def scrape_archived_posts(headers, model_id, timestamp=0) -> list:
 
 def parse_posts(posts: list):
     media = [post['media'] for post in posts if post.get('media')]
-    #adding debug to make sure all media items are downloaded
-    if debug:
-        for post in posts:
-            debug_urls = []
-            print(f"Post ID:{post['id']} should have {post['mediaCount']} items.")
-            for item in post['media']:
-                debug_urls.append(item['info']['source']['source'])
-            print(f"{len(debug_urls)} media items were found.")
-
-    #end of debug addition
     urls = [
         (i['info']['source']['source'], i['createdAt'], i['id'], i['type']) for m in media for i in m if i['canView']]
     return urls
