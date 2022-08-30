@@ -47,7 +47,9 @@ mainPromptChoices = {
     'Unlike all of a user\'s posts': 2,
     'Migrate an old database': 3,
     'Edit `auth.json` file': 4,
-    'Profiles': 5
+    'Profiles': 5,
+    'Remove user/users database and re-download': 6,
+    'Exit': 7
 }
 usernameOrListChoices = {
     'Print a list of my subscriptions': 0,
@@ -61,3 +63,11 @@ profilesPromptChoices = {
     'Delete a profile': 3,
     'View profiles': 4
 }
+
+removeUserChoices = {
+    'Remove a user': 0,
+    'Remove all users': 1
+}
+
+
+debug = False
