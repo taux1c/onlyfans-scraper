@@ -78,7 +78,7 @@ def parse_posts(posts: list):
             for item in post['media']:
                 debug_urls.append(item['info']['source']['source'])
             print(f"{len(debug_urls)} media items were found.")
-
+            print(f"{post['mediaCount'] - len(debug_urls)} items were missed!")
     #end of debug addition
     urls = [
         (i['info']['source']['source'], i['createdAt'], i['id'], i['type']) for m in media for i in m if i['canView']]
