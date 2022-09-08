@@ -39,7 +39,7 @@ def parse_highlights(highlights: list) -> list:
     if not highlights['hasMore']:
         return []
 
-    highlight_ids = [highlight['id'] for highlight in highlights.get("data")]
+    highlight_ids = [highlight['id'] for highlight in highlights['list']]
     return highlight_ids
 
 
