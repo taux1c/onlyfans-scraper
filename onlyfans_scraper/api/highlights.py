@@ -35,12 +35,23 @@ def scrape_highlights(headers, user_id) -> list:
         r_one.raise_for_status()
 
 
-def parse_highlights(highlights: list) -> list:
-    if not highlights['hasMore']:
-        return []
 
-    highlight_ids = [highlight['id'] for highlight in highlights['list']]
-    return highlight_ids
+def parse_highlights(highlights: list) -> list:
+    if 'hasMore' in highlights:
+        print('hasMore Found')
+        if not highlights['hasMore']:
+            print('hasMore false')
+            return []
+    else:
+        print('HasMore error with highlights.')
+        input("Press Enter to continue.")
+    try:
+        highlight_ids = [highlight['id'] for highlight in highlights['list']]
+        return highlight_ids
+    except Exception as e:
+        print("{} \n \n \n The above exception was encountered while trying to save highlights.".format(e))
+        input("Press Enter to continue.")
+
 
 
 async def process_highlights_ids(headers, ids: list) -> list:
