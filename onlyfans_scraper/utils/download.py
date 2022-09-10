@@ -11,6 +11,7 @@ import asyncio
 import math
 import pathlib
 import platform
+from ../constants import path_to_file
 
 import httpx
 from tqdm.asyncio import tqdm
@@ -104,8 +105,8 @@ def convert_num_bytes(num_bytes: int) -> str:
 async def download(client, path, model_id, file_size_limit,
                    url, date=None, id_=None, media_type=None):
     filename = url.split('?', 1)[0].rsplit('/', 1)[-1]
-    path_to_file = path / filename
-
+    #path_to_file = path / filename
+    path_to_file = config.path_to_file
     num_bytes_downloaded = 0
 
     async with client.stream('GET', url) as r:

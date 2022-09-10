@@ -36,21 +36,32 @@ def scrape_highlights(headers, user_id) -> list:
 
 
 
+
 def parse_highlights(highlights: list) -> list:
+    #This needs further work but will work for now. I was thinking of adding full recurssive ability until all conditions are met.
+    #This means that whenever onlyfans changes the name of the list containing the highlights it wont matter because the name is variable.
+    #To break this they would have to change the conditions or in this release the layers.
+    for item in highlights:
+        if isinstance(highlights[item],list):
+            for highlight in highlights[item]:
+                if 'id' in highlight:
+                    if isinstance(highlight['id'],int):
+                        ids_location = highlights[item]
+
     if 'hasMore' in highlights:
-        print('hasMore Found')
         if not highlights['hasMore']:
-            print('hasMore false')
             return []
     else:
         print('HasMore error with highlights.')
         input("Press Enter to continue.")
     try:
-        highlight_ids = [highlight['id'] for highlight in highlights['list']]
+        highlight_ids = [highlight['id'] for highlight in ids_location]
+        #highlight_ids = [highlight['id'] for highlight in highlights['list']]
         return highlight_ids
     except Exception as e:
         print("{} \n \n \n The above exception was encountered while trying to save highlights.".format(e))
         input("Press Enter to continue.")
+
 
 
 
