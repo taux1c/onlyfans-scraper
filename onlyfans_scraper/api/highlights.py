@@ -54,6 +54,7 @@ def parse_highlights(highlights: list) -> list:
     else:
         print('HasMore error with highlights.')
         input("Press Enter to continue.")
+        return[]
     try:
         highlight_ids = [highlight['id'] for highlight in ids_location]
         #highlight_ids = [highlight['id'] for highlight in highlights['list']]
@@ -61,6 +62,7 @@ def parse_highlights(highlights: list) -> list:
     except Exception as e:
         print("{} \n \n \n The above exception was encountered while trying to save highlights.".format(e))
         input("Press Enter to continue.")
+        return[]
 
 
 
