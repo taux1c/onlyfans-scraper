@@ -139,15 +139,11 @@ def do_download_content(headers, username, model_id, ignore_prompt=False):
         combined_urls = process_areas(headers, username, model_id)
     # If we shouldn't ignore the areas prompt:
 
-    try:
-        asyncio.run(download.process_urls(
-            headers,
-            username,
-            model_id,
-            combined_urls))
-        except Exception as e:
-            print(e)
-            input('Press enter to continue...')
+    asyncio.run(download.process_urls(
+        headers,
+        username,
+        model_id,
+        combined_urls))
 
 
 def do_database_migration(path, model_id):
