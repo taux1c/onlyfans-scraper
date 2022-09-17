@@ -145,9 +145,9 @@ def do_download_content(headers, username, model_id, ignore_prompt=False):
             username,
             model_id,
             combined_urls))
-        except Exception as e:
-            print(e)
-            input('Press enter to continue...')
+    except Exception as e:
+        print(e)
+        input('Press enter to continue...')
 
 
 def do_database_migration(path, model_id):
