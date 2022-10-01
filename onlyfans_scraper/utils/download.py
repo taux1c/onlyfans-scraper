@@ -11,7 +11,7 @@ import asyncio
 import math
 import pathlib
 import platform
-from ..constants import path_to_file
+
 
 import httpx
 from tqdm.asyncio import tqdm
