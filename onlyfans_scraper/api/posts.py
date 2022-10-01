@@ -30,9 +30,9 @@ def scrape_pinned_posts(headers, model_id) -> list:
             return r.json()['list']
         r.raise_for_status()
 
-def scrape_paid_posts(headers, timestamp=0) -> list:
-    ep = paidNextEP if timestamp else paidEP
-    url = ep.format(timestamp)
+def scrape_paid_posts(headers, offset=0) -> list:
+    ep = paidNextEP if offset else paidEP
+    url = ep.format(offset)
 
     with httpx.Client(http2=True, headers=headers) as c:
         auth.add_cookies(c)
@@ -43,7 +43,7 @@ def scrape_paid_posts(headers, timestamp=0) -> list:
             posts = r.json.get('list', [])
             if not posts:
                 return posts
-            posts += scrape_paid_posts(headers, posts[-1]['postedAtPrecise'])
+            posts += scrape_paid_posts(headers, offset + len(posts))
             return posts
         r.raise_for_status()
 
@@ -86,8 +86,29 @@ def scrape_archived_posts(headers, model_id, timestamp=0) -> list:
         r.raise_for_status()
 
 
-def parse_posts(posts: list):
-    media = [post['media'] for post in posts if post.get('media')]
-    urls = [
-        (i['info']['source']['source'], i['createdAt'], i['id'], i['type']) for m in media for i in m if i['canView']]
+def parse_posts(posts: list) -> list[tuple[str, str, int, str]]:
+    urls = []
+    for post in posts:
+        if 'media' not in post:
+            continue
+        for media in post.get('media', []):
+            for item in media:
+                match item:
+                    # posts
+                    case {"info": {"source":{"source": source}}, "createdAt": createdAt, "id": itemId, "type": itemtype, "canView": True }:
+                        urls.append((source, createdAt, itemId, itemtype))
+                    # paid posts
+                    case {"source": {"source": source}, "id": itemId, "type": itemtype}:
+                        urls.append((source, post.get('createdAt',None), itemId, itemtype))
     return urls
+            
+            
+
+    # # media = [post['media'] for post in posts if post.get('media')]
+    # urls = [
+    #     (i["source"]["source"], i['createdAt'], i['id'], i['type']) 
+    #     for m in media 
+    #     for i in m 
+    #     if i['canView']
+    # ]
+    # return urls
