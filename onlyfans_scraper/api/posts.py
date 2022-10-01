@@ -12,7 +12,8 @@ import httpx
 from ..constants import (
     timelineEP, timelineNextEP,
     timelinePinnedEP,
-    archivedEP, archivedNextEP
+    archivedEP, archivedNextEP,
+    paidEP, paidNextEP
 )
 from ..utils import auth
 
@@ -27,6 +28,23 @@ def scrape_pinned_posts(headers, model_id) -> list:
         r = c.get(url, timeout=None)
         if not r.is_error:
             return r.json()['list']
+        r.raise_for_status()
+
+def scrape_paid_posts(headers, timestamp=0) -> list:
+    ep = paidNextEP if timestamp else paidEP
+    url = ep.format(timestamp)
+
+    with httpx.Client(http2=True, headers=headers) as c:
+        auth.add_cookies(c)
+        c.headers.update(auth.create_sign(url, headers))
+
+        r = c.get(url, timeout=None)
+        if not r.is_error:
+            posts = r.json.get('list', [])
+            if not posts:
+                return posts
+            posts += scrape_paid_posts(headers, posts[-1]['postedAtPrecise'])
+            return posts
         r.raise_for_status()
 
 

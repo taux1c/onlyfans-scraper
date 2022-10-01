@@ -11,7 +11,7 @@ import hashlib
 import json
 import pathlib
 import time
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urlsplit
 
 import httpx
 
@@ -120,8 +120,8 @@ def create_sign(link, headers):
 
     time2 = str(round(time.time() * 1000))
 
-    path = urlparse(link).path
-    query = urlparse(link).query
+    path = urlsplit(link).path
+    query = urlsplit(link).query
     path = path if not query else f"{path}?{query}"
 
     static_param = content['static_param']

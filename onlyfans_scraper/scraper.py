@@ -73,6 +73,14 @@ def process_pinned_posts(headers, model_id):
         return pinned_posts_urls
     return []
 
+@Revolution(desc="Getting paid posts...")
+def process_paid_posts(headers):
+    paid_posts = posts.scrape_paid_posts(headers)
+
+    if paid_posts:
+        paid_posts_url = posts.parse_posts(paid_posts)
+        return paid_posts_url
+    return []
 
 def process_profile(headers, username) -> list:
     user_profile = profile.scrape_profile(headers, username)
@@ -89,9 +97,10 @@ def process_areas_all(headers, username, model_id) -> list:
     archived_posts_urls = process_archived_posts(headers, model_id)
     highlights_urls = process_highlights(headers, model_id)
     messages_urls = process_messages(headers, model_id)
+    paid_urls = process_paid_posts(headers)
 
     combined_urls = profile_urls + pinned_posts_urls + timeline_posts_urls + \
-        archived_posts_urls + highlights_urls + messages_urls
+        archived_posts_urls + highlights_urls + messages_urls + paid_urls
 
     return combined_urls
 
@@ -108,6 +117,7 @@ def process_areas(headers, username, model_id) -> list:
         archived_posts_urls = []
         highlights_urls = []
         messages_urls = []
+        paid_urls = []
 
         profile_urls = process_profile(headers, username)
 
@@ -124,8 +134,11 @@ def process_areas(headers, username, model_id) -> list:
         if 'Messages' in result_areas_prompt:
             messages_urls = process_messages(headers, model_id)
 
+        if 'Paid' in result_areas_prompt:
+            paid_urls = process_paid_posts(headers)
+
         combined_urls = profile_urls + pinned_posts_urls + timeline_posts_urls + \
-            archived_posts_urls + highlights_urls + messages_urls
+            archived_posts_urls + highlights_urls + messages_urls + paid_urls
 
     return combined_urls
 

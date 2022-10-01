@@ -98,6 +98,7 @@ def areas_prompt() -> list:
                 Choice('Archived'),
                 Choice('Highlights'),
                 Choice('Messages'),
+                Choice('Paid')
             ]
         }
     ]

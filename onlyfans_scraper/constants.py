@@ -31,10 +31,14 @@ archivedNextEP = 'https://onlyfans.com/api2/v2/users/{}/posts/archived?limit=10&
 
 highlightsWithStoriesEP = 'https://onlyfans.com/api2/v2/users/{}/stories/highlights?limit=5&offset=0&unf=1'
 highlightsWithAStoryEP = 'https://onlyfans.com/api2/v2/users/{}/stories?unf=1'
+
 storyEP = 'https://onlyfans.com/api2/v2/stories/highlights/{}?unf=1'
 
 messagesEP = 'https://onlyfans.com/api2/v2/chats/{}/messages?limit=10&offset=0&order=desc&skip_users=all&skip_users_dups=1'
 messagesNextEP = 'https://onlyfans.com/api2/v2/chats/{}/messages?limit=10&offset=0&id={}&order=desc&skip_users=all&skip_users_dups=1'
+
+paidEP = 'https://onlyfans.com/api2/v2/posts/paid?limit=100&skip_users=all&format=infinte'
+paidNextEP = 'https://onlyfans.com/api2/v2/posts/paid?limit=100&skip_users=all&format=infinte&beforePublishTime={}'
 
 favoriteEP = 'https://onlyfans.com/api2/v2/posts/{}/favorites/{}'
 postURL = 'https://onlyfans.com/{}/{}'
@@ -47,7 +51,8 @@ mainPromptChoices = {
     'Unlike all of a user\'s posts': 2,
     'Migrate an old database': 3,
     'Edit `auth.json` file': 4,
-    'Profiles': 5
+    'Profiles': 5,
+    'Download all of my paid content': 6,
 }
 usernameOrListChoices = {
     'Print a list of my subscriptions': 0,
