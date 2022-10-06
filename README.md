@@ -3,7 +3,7 @@
 Telegram: https://t.me/+ajP69yhLcPZiMGZh
 
 
-Discord Server: https://discord.gg/vx7hy8CqcP
+Discord Server: https://discord.gg/x9HCByhPTC
 
 
 Space: https://taux1c.jetbrains.space/p/onlyfans-scraper/repositories/onlyfans-scraper/
