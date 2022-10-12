@@ -355,7 +355,7 @@ def main():
     parser.add_argument(
         '-u', '--username', help='scrape the content of a user', action='store_true')
     parser.add_argument(
-        '-a', '--all', help='scrape the content of all users', action='store_true')
+        '-a', '--all', help='scrape the content of all users', action='store_true'
     )
     args = parser.parse_args()
     if args.edit:
