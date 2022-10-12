@@ -23,12 +23,12 @@ from revolution import Revolution
 
 silent = False
 
-def need_revolution(*args, **kwargs):
-    def wrapper(*args, **kwargs):
+def need_revolution(message):
+    def wrapper(f):
         if silent:
             f()
         else:
-            @Revolution(desc=m)
+            @Revolution(desc=message)
             f()
     return wrapper
 
