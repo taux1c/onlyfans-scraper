@@ -351,12 +351,11 @@ def main():
     if args.all:
         silent_run()
 
-    else:
 
-        try:
-            process_prompts()
-        except KeyboardInterrupt:
-            sys.exit(1)
+    try:
+        process_prompts()
+    except KeyboardInterrupt:
+        sys.exit(1)
 
 
 if __name__ == '__main__':
