@@ -23,20 +23,21 @@ from revolution import Revolution
 
 silent = False
 
-def need_revolution(*args,**kwargs):
-    def decorator(*args,**kwargs):
-        if silent:
-            return f(*args,**kwargs)
-        else:
-            def rev(*args,**kwargs):
-                @Revolution(desc = m)
-                f(*args,**kwargs)
-            return rev(*args,**kwargs)
-    return decorator(*args,**kwargs)
+def need_revolution(message):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            if silent:
+                return func(*args, **kwargs)
+            if not silent:
+                return Revolution(desc=message)(func)(*args, **kwargs)
+
+        return wrapper
+    return decorator
 
 
 
-@need_revolution(m="Getting messages...")
+
+@need_revolution("Getting messages...")
 #@Revolution(desc='Getting messages...')
 def process_messages(headers, model_id):
     messages_ = messages.scrape_messages(headers, model_id)
@@ -46,7 +47,7 @@ def process_messages(headers, model_id):
         return messages_urls
     return []
 
-@need_revolution(m="Getting highlights...")
+@need_revolution("Getting highlights...")
 #@Revolution(desc='Getting highlights...')
 def process_highlights(headers, model_id):
     highlights_, stories = highlights.scrape_highlights(headers, model_id)
@@ -59,7 +60,7 @@ def process_highlights(headers, model_id):
         return stories_urls
     return []
 
-@need_revolution(m="Getting subscriptions...")
+@need_revolution("Getting subscriptions...")
 #@Revolution(desc='Getting archived media...')
 def process_archived_posts(headers, model_id):
     archived_posts = posts.scrape_archived_posts(headers, model_id)
@@ -69,7 +70,7 @@ def process_archived_posts(headers, model_id):
         return archived_posts_urls
     return []
 
-@need_revolution(m="Getting timeline media...")
+@need_revolution("Getting timeline media...")
 #@Revolution(desc='Getting timeline media...')
 def process_timeline_posts(headers, model_id):
     timeline_posts = posts.scrape_timeline_posts(headers, model_id)
@@ -79,7 +80,7 @@ def process_timeline_posts(headers, model_id):
         return timeline_posts_urls
     return []
 
-@need_revolution(m="Getting pinned media...")
+@need_revolution("Getting pinned media...")
 #@Revolution(desc='Getting pinned media...')
 def process_pinned_posts(headers, model_id):
     pinned_posts = posts.scrape_pinned_posts(headers, model_id)
