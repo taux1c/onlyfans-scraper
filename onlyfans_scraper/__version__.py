@@ -8,7 +8,7 @@ r"""
 """
 
 __title__ = 'onlyfans-scraper'
-__version__ = '2.0.0'
+__version__ = '2.0.1'
 __author__ = 'Taux1c'
 __author_email__ = 'taux1c.software@proton.me'
 __description__ = 'A command-line program to download media, like posts, and more from creators on OnlyFans.'
