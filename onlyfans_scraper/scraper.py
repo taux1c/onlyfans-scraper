@@ -314,6 +314,22 @@ def process_prompts():
 
         loop()
 
+def silent_run():
+    headers = auth.make_headers(auth.read_auth())
+
+    try:
+        resp = me.scrape_user(headers)
+    except Exception as e:
+        print("Silent run failed with exception: ", e)
+        return
+    subscribe_count = process_me(headers)
+    parsed_subscriptions = get_models(headers, subscribe_count)
+    usernames = get_usernames(parsed_subscriptions)
+
+    for username in usernames:
+        model_id = profile.get_id(headers, username)
+        do_download_content(
+            headers, username, model_id, ignore_prompt=True)
 
 def main():
     if platform.system == 'Windows':
@@ -324,16 +340,23 @@ def main():
         '-e', '--edit', help='view or edit your current auth', action='store_true')
     parser.add_argument(
         '-u', '--username', help='scrape the content of a user', action='store_true')
+    parser.add_argument(
+        '-a', '--all', help='scrape the content of all users', action='store_true')
+    )
     args = parser.parse_args()
     if args.edit:
         pass
     if args.username:
         pass
+    if args.all:
+        silent_run()
 
-    try:
-        process_prompts()
-    except KeyboardInterrupt:
-        sys.exit(1)
+    else:
+
+        try:
+            process_prompts()
+        except KeyboardInterrupt:
+            sys.exit(1)
 
 
 if __name__ == '__main__':
