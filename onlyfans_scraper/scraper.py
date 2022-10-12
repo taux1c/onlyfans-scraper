@@ -27,9 +27,10 @@ def need_revolution(message):
     def decorator(func):
         def wrapper(*args, **kwargs):
             if silent:
-                return func(*args, **kwargs)
+                func(*args, **kwargs)
             if not silent:
-                return Revolution(desc=message)(func)(*args, **kwargs)
+                @Revolution(desc=message)
+                func(*args, **kwargs)
 
         return wrapper
     return decorator
