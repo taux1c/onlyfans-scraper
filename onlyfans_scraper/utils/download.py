@@ -41,7 +41,7 @@ async def process_urls(headers, username, model_id, urls):
         else:
             dir = pathlib.Path.cwd()
         path = dir / username
-        path.mkdir(exist_ok=True)
+        path.mkdir(exist_ok=True, parents=True)
 
         file_size_limit = config.get('file_size_limit')
 
