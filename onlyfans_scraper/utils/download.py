@@ -95,6 +95,8 @@ async def process_urls(headers, username, model_id, urls):
 
 
 def convert_num_bytes(num_bytes: int) -> str:
+    if num_bytes == 0:
+      return '0 B'
     num_digits = int(math.log10(num_bytes)) + 1
 
     if num_digits >= 10:
