@@ -370,6 +370,7 @@ def main():
         '-u', '--username', help='scrape the content of a user', action='store_true')
     parser.add_argument(
         '-a', '--all', help='scrape the content of all users', action='store_true'
+    )
     parser.add_argument(
         '-d', '--daemon', help='This will run the program in the background and scrape everything from everyone. It will run untill manually killed.', action='store_true')
     )
