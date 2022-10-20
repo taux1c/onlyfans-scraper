@@ -11,7 +11,7 @@ import asyncio
 import math
 import pathlib
 import platform
-from ..constants import path_to_file
+
 
 import httpx
 from tqdm.asyncio import tqdm
@@ -38,7 +38,6 @@ async def process_urls(headers, username, model_id, urls):
         save_location = config.get('save_location')
         if save_location:
             dir = pathlib.Path(save_location)
-
         else:
             dir = pathlib.Path.cwd()
         path = dir / username

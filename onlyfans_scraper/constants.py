@@ -63,4 +63,3 @@ profilesPromptChoices = {
 }
 
 
-path_to_file = ""
