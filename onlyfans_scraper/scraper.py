@@ -373,7 +373,7 @@ def main():
     parser.add_argument(
         '-d', '--daemon', help='This will run the program in the background and scrape everything from everyone. It will run untill manually killed.', action='store_true')
     )
-    )
+
     args = parser.parse_args()
     if args.edit:
         pass
