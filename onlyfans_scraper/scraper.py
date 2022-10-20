@@ -12,6 +12,8 @@ import asyncio
 import os
 import sys
 import platform
+from random import randint
+from time import sleep
 
 from .api import init, highlights, me, messages, posts, profile, subscriptions
 from .db import operations
@@ -347,6 +349,16 @@ def silent_run():
         do_download_content(
             headers, username, model_id, ignore_prompt=True)
 
+
+def daemon():
+    while True:
+        silent_run()
+        t1 = randint(3600, 7200)
+        t2 = randint(1800, 2700)
+        t = t1 + t2
+        sleep(t)
+
+
 def main():
     if platform.system == 'Windows':
         os.system('color')
@@ -358,6 +370,9 @@ def main():
         '-u', '--username', help='scrape the content of a user', action='store_true')
     parser.add_argument(
         '-a', '--all', help='scrape the content of all users', action='store_true'
+    parser.add_argument(
+        '-d', '--daemon', help='This will run the program in the background and scrape everything from everyone. It will run untill manually killed.', action='store_true')
+    )
     )
     args = parser.parse_args()
     if args.edit:
@@ -367,6 +382,8 @@ def main():
     if args.all:
         silent = True
         silent_run()
+    if args.daemon:
+        daemon()
 
 
     try:

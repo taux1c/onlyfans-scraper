@@ -13,6 +13,7 @@ authFile = 'auth.json'
 databaseFile = 'models.db'
 mainProfile = 'main_profile'
 requestAuth = 'request_auth.json'
+debug = False
 
 initEP = 'https://onlyfans.com/api2/v2/init'
 
