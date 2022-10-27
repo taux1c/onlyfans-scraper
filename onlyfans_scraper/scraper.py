@@ -381,7 +381,7 @@ def main():
     if args.edit:
         pass
     if args.username:
-        names = [x for x in args.username.strip().split(' ') if x]
+        names = [x for x in args.username.strip().split(',') if x]
         for name in names:
             download_user(name)
     if args.all:
