@@ -371,7 +371,8 @@ def main():
     parser.add_argument(
         '-e', '--edit', help='view or edit your current auth', action='store_true')
     parser.add_argument(
-        '-u', '--username', help='scrape the content of a user',)
+        '-u', '--username', help="Download content from a user or list of users (name,name2)")
+    )
     parser.add_argument(
         '-a', '--all', help='scrape the content of all users', action='store_true')
     parser.add_argument(
@@ -381,9 +382,7 @@ def main():
     if args.edit:
         pass
     if args.username:
-        names = [x for x in args.username.strip().split(',') if x]
-        for name in names:
-            download_user(name)
+        print(args)
     if args.all:
         silent = True
         silent_run()
