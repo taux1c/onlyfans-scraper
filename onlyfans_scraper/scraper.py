@@ -382,7 +382,7 @@ def main():
     if args.edit:
         pass
     if args.username:
-        print(args['username'])
+        print(args.username)
     if args.all:
         silent = True
         silent_run()
