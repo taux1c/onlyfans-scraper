@@ -337,6 +337,7 @@ def download_user(username):
     do_download_content(headers, username, profile.get_id(headers, username), ignore_prompt=True)
 
 
+
 def silent_run():
     headers = auth.make_headers(auth.read_auth())
 
@@ -386,9 +387,11 @@ def main():
         usernames = args.username
         for username in usernames.strip().split(','):
             download_user(username)
+        sys.exit()
     if args.all:
         silent = True
         silent_run()
+        sys.exit()
     if args.daemon:
         daemon()
 
