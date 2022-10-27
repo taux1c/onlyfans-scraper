@@ -332,6 +332,10 @@ def process_prompts():
 
         loop()
 
+def download_user(username):
+    do_download_content(headers, username, profile.get_id(headers, username))
+
+
 def silent_run():
     headers = auth.make_headers(auth.read_auth())
 
@@ -377,7 +381,9 @@ def main():
     if args.edit:
         pass
     if args.username:
-        pass
+        names = [x for x in args.username.strip().split(' ') if x]
+        for name in names:
+            download_user(name)
     if args.all:
         silent = True
         silent_run()
