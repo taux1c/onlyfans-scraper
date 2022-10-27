@@ -333,6 +333,7 @@ def process_prompts():
         loop()
 
 def download_user(username):
+    headers = auth.make_headers(auth.read_auth())
     do_download_content(headers, username, profile.get_id(headers, username))
 
 
