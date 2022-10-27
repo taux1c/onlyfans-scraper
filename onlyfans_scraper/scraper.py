@@ -371,7 +371,7 @@ def main():
     parser.add_argument(
         '-e', '--edit', help='view or edit your current auth', action='store_true')
     parser.add_argument(
-        '-u', '--username', help='scrape the content of a user', action='store_true')
+        '-u', '--username', help='scrape the content of a user',)
     parser.add_argument(
         '-a', '--all', help='scrape the content of all users', action='store_true')
     parser.add_argument(
