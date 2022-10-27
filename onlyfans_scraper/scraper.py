@@ -334,7 +334,7 @@ def process_prompts():
 
 def download_user(username):
     headers = auth.make_headers(auth.read_auth())
-    do_download_content(headers, username, profile.get_id(headers, username))
+    do_download_content(headers, username, profile.get_id(headers, username), ignore_prompt=True)
 
 
 def silent_run():
