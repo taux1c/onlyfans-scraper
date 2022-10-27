@@ -382,7 +382,9 @@ def main():
     if args.edit:
         pass
     if args.username:
-        print(args.username)
+        usernames = args.username
+        for username in usernames.strip().split(','):
+            download_user(username)
     if args.all:
         silent = True
         silent_run()
