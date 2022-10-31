@@ -358,11 +358,22 @@ def silent_run():
 
 def daemon():
     while True:
-        silent_run()
-        t1 = randint(3600, 7200)
-        t2 = randint(1800, 2700)
-        t = t1 + t2
-        sleep(t)
+        # Trying vs running allows the daemon to recover from errors and try again later.
+        try:
+            silent_run()
+        except Exception as e:
+            print("Daemon failed with exception: ", e)
+        finally:
+            # Sleep for between 1 and 2 hours
+            t1 = randint(3600, 7200)
+            # t2 is an offset that can be anywhere from 0 to 30 minutes
+            t2 = randint(0, 1800)
+            # This allows us to sleep for a random amount of time between 1 and 2.5 hours.
+            # This helps to prevent the daemon from being detected by the site as a bot.
+            # To my knowledge, this type of detection isn't used by the site, but it's
+            # better to be safe than sorry.
+            t = t1 + t2
+            sleep(t)
 
 
 def main():
