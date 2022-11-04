@@ -374,10 +374,10 @@ def daemon():
             if not has_gone_night_night:
                 if night_night_timer - datetime.datetime.now() > timedelta(hours=14):
                     has_gone_night_night = True
-                    night_night_timer = datetime.datetime.now()
                     t = choice([x for x in range(25200, 32400)])
                     print("Going night night for {} hours".format(t/3600))
                     sleep(t)
+                    night_night_timer = datetime.datetime.now()
                     waking_up = True
 
             if not waking_up:
