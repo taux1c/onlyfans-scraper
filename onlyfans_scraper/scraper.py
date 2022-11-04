@@ -359,8 +359,7 @@ def silent_run():
 
 
 def daemon():
-    has_gone_night_night = False
-    night_night_timer = datetime.datetime.now()
+    wake_up_time = datetime.datetime.now()
     waking_up = False
     while True:
         # Trying vs running allows the daemon to recover from errors and try again later.
@@ -370,15 +369,16 @@ def daemon():
             print("Daemon failed with exception: ", e)
         finally:
             # If the daemon has not paused for a normal person sleep cycle (7 - 9 hours)
-            # in the last 14 hours it will sleep for 7 - 9 hours.
-            if not has_gone_night_night:
-                if night_night_timer - datetime.datetime.now() > timedelta(hours=14):
-                    has_gone_night_night = True
-                    t = choice([x for x in range(25200, 32400)])
-                    print("Going night night for {} hours".format(t/3600))
-                    sleep(t)
-                    night_night_timer = datetime.datetime.now()
-                    waking_up = True
+
+            # If the daemon has not slept for 7 - 9 hours in the last 14 hours
+            if datetime.datetime.now() - wake_up_time > timedelta(hours=14):
+                # Set the variable used to determine if the daemon has slept to true.
+                has_gone_night_night = True
+                t = choice([x for x in range(25200, 32400)])
+                print("Going night night for {} hours".format(t/3600))
+                sleep(t)
+                wake_up_time = datetime.datetime.now()
+                waking_up = True
 
             if not waking_up:
                 # Sleep for between 1 and 2 hours
