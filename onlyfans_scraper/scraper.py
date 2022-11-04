@@ -359,7 +359,7 @@ def silent_run():
 
 
 def daemon():
-    wake_up_time = datetime.datetime.now()
+    wake_up_time = datetime.now()
     waking_up = False
     while True:
         # Trying vs running allows the daemon to recover from errors and try again later.
