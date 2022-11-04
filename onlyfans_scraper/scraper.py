@@ -371,13 +371,11 @@ def daemon():
             # If the daemon has not paused for a normal person sleep cycle (7 - 9 hours)
 
             # If the daemon has not slept for 7 - 9 hours in the last 14 hours
-            if datetime.datetime.now() - wake_up_time > timedelta(hours=14):
-                # Set the variable used to determine if the daemon has slept to true.
-                has_gone_night_night = True
+            if datetime.now() - wake_up_time > timedelta(hours=14):
                 t = choice([x for x in range(25200, 32400)])
                 print("Going night night for {} hours".format(t/3600))
                 sleep(t)
-                wake_up_time = datetime.datetime.now()
+                wake_up_time = datetime.now()
                 waking_up = True
 
             if not waking_up:
