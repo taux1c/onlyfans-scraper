@@ -1,5 +1,5 @@
 
-If you're too lazy to read the rest of this someone doen you a favor and made a youtube video. 
+If you're too lazy to read the rest of this someone done you a favor and made a youtube video. 
 https://www.youtube.com/watch?v=wmC9HOeswvw
 
 
