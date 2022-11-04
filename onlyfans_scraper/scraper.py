@@ -13,7 +13,7 @@ import datetime
 import os
 import sys
 import platform
-from random import randint
+from random import randint, choice
 from time import sleep
 from datetime import datetime, timedelta
 
@@ -372,10 +372,10 @@ def daemon():
             # If the daemon has not paused for a normal person sleep cycle (7 - 9 hours)
             # in the last 14 hours it will sleep for 7 - 9 hours.
             if not has_gone_night_night:
-                if night_night_timer - datetime.datetime.now() > datetime.timedelta(hours=14):
+                if night_night_timer - datetime.datetime.now() > timedelta(hours=14):
                     has_gone_night_night = True
                     night_night_timer = datetime.datetime.now()
-                    t = randint([x for x in range(25200, 32400)])
+                    t = choice([x for x in range(25200, 32400)])
                     print("Going night night for {} hours".format(t/3600))
                     sleep(t)
                     waking_up = True
