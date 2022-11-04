@@ -12,6 +12,10 @@ Space: https://taux1c.jetbrains.space/p/onlyfans-scraper/repositories/onlyfans-s
 GitHub: https://github.com/taux1c/onlyfans-scraper
 
 
+If you're too lazy to read the rest of this someone doen you a favor and made a youtube video. 
+https://www.youtube.com/watch?v=wmC9HOeswvw
+
+
 <img src="https://raw.githubusercontent.com/taux1c/onlyfans-scraper/main/media/icon.png" width="100" align="right">
 
 # onlyfans-scraper
@@ -175,3 +179,4 @@ Then the path you enter should be `/Users/home/.sites/OnlyFans/melodyjai/Metadat
 If you run into any trouble while using this script, or if you're confused on how to get something running, feel free to [open an issue](https://github.com/taux1c/onlyfans-scraper/issues/new) or [open a discussion](https://github.com/taux1c/onlyfans-scraper/discussions/new). I don't bite :D
 
 If you would like a feature added to the program or have some ideas, [start a discussion](https://github.com/taux1c/onlyfans-scraper/discussions/new)!
+

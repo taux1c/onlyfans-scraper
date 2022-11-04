@@ -9,11 +9,13 @@ r"""
 
 import argparse
 import asyncio
+import datetime
 import os
 import sys
 import platform
 from random import randint
 from time import sleep
+from datetime import datetime, timedelta
 
 from .api import init, highlights, me, messages, posts, profile, subscriptions
 from .db import operations
@@ -357,6 +359,9 @@ def silent_run():
 
 
 def daemon():
+    has_gone_night_night = False
+    night_night_timer = datetime.datetime.now()
+    waking_up = False
     while True:
         # Trying vs running allows the daemon to recover from errors and try again later.
         try:
@@ -364,16 +369,30 @@ def daemon():
         except Exception as e:
             print("Daemon failed with exception: ", e)
         finally:
-            # Sleep for between 1 and 2 hours
-            t1 = randint(3600, 7200)
-            # t2 is an offset that can be anywhere from 0 to 30 minutes
-            t2 = randint(0, 1800)
-            # This allows us to sleep for a random amount of time between 1 and 2.5 hours.
-            # This helps to prevent the daemon from being detected by the site as a bot.
-            # To my knowledge, this type of detection isn't used by the site, but it's
-            # better to be safe than sorry.
-            t = t1 + t2
-            sleep(t)
+            # If the daemon has not paused for a normal person sleep cycle (7 - 9 hours)
+            # in the last 14 hours it will sleep for 7 - 9 hours.
+            if not has_gone_night_night:
+                if night_night_timer - datetime.datetime.now() > datetime.timedelta(hours=14):
+                    has_gone_night_night = True
+                    night_night_timer = datetime.datetime.now()
+                    t = randint([x for x in range(25200, 32400)])
+                    print("Going night night for {} hours".format(t/3600))
+                    time.sleep(t)
+                    waking_up = True
+
+            if not waking_up:
+                # Sleep for between 1 and 2 hours
+                t1 = randint(3600, 7200)
+                # t2 is an offset that can be anywhere from 0 to 30 minutes
+                t2 = randint(0, 1800)
+                # This allows us to sleep for a random amount of time between 1 and 2.5 hours.
+                # This helps to prevent the daemon from being detected by the site as a bot.
+                # To my knowledge, this type of detection isn't used by the site, but it's
+                # better to be safe than sorry.
+                t = t1 + t2
+                sleep(t)
+            else:
+                waking_up = False
 
 
 def main():
