@@ -353,9 +353,12 @@ def silent_run():
     usernames = get_usernames(parsed_subscriptions)
 
     for username in usernames:
-        model_id = profile.get_id(headers, username)
-        do_download_content(
-            headers, username, model_id, ignore_prompt=True)
+        try:
+            model_id = profile.get_id(headers, username)
+            do_download_content(
+                headers, username, model_id, ignore_prompt=True)
+        except Exception as e:
+            print("Silent run failed with exception: ", e)
 
 
 def daemon():
