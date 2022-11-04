@@ -377,7 +377,7 @@ def daemon():
                     night_night_timer = datetime.datetime.now()
                     t = randint([x for x in range(25200, 32400)])
                     print("Going night night for {} hours".format(t/3600))
-                    time.sleep(t)
+                    sleep(t)
                     waking_up = True
 
             if not waking_up:
