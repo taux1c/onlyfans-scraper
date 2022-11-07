@@ -1,3 +1,16 @@
+<h1>Locations</h1>
+
+Telegram: https://t.me/+ajP69yhLcPZiMGZh
+
+
+Discord Server: https://discord.gg/x9HCByhPTC
+
+
+Space: https://taux1c.jetbrains.space/p/onlyfans-scraper/repositories/onlyfans-scraper/
+
+
+GitHub: https://github.com/taux1c/onlyfans-scraper
+
 
 If you're too lazy to read the rest of this someone done you a favor and made a youtube video. 
 https://www.youtube.com/watch?v=wmC9HOeswvw
