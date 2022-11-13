@@ -365,9 +365,11 @@ def daemon():
             if datetime.now() - wake_up_time > timedelta(hours=14):
                 t = choice([x for x in range(25200, 32400)])
                 print("Going night night for {} hours".format(t/3600))
+                print("Wake up time: {}".format(datetime.now() + timedelta(seconds=t)))
                 sleep(t)
                 wake_up_time = datetime.now()
                 waking_up = True
+                print("Waking up at {}".format(wake_up_time))
 
             if not waking_up:
                 # Sleep for between 1 and 2 hours
@@ -379,7 +381,10 @@ def daemon():
                 # To my knowledge, this type of detection isn't used by the site, but it's
                 # better to be safe than sorry.
                 t = t1 + t2
+                print("Sleeping for {} hours".format(t/3600))
+                print("Wake up time: {}".format(datetime.now() + timedelta(seconds=t)))
                 sleep(t)
+                print("Waking up at {}".format(datetime.now()))
             else:
                 waking_up = False
 
