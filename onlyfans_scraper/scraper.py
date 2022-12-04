@@ -24,6 +24,7 @@ from .interaction import like
 from .utils import auth, config, download, profiles, prompts
 import webbrowser
 from revolution import Revolution
+from utils.sleep import nap_or_sleep
 
 
 # @need_revolution("Getting messages...")
@@ -350,8 +351,7 @@ def silent_run():
 
 
 def daemon():
-    wake_up_time = datetime.now()
-    waking_up = False
+
     while True:
         # Trying vs running allows the daemon to recover from errors and try again later.
         try:
@@ -359,34 +359,9 @@ def daemon():
         except Exception as e:
             print("Daemon failed with exception: ", e)
         finally:
-            # If the daemon has not paused for a normal person sleep cycle (7 - 9 hours)
+            nap_or_sleep()
 
-            # If the daemon has not slept for 7 - 9 hours in the last 14 hours
-            if datetime.now() - wake_up_time > timedelta(hours=14):
-                t = choice([x for x in range(25200, 32400)])
-                print("Going night night for {} hours".format(t/3600))
-                print("Wake up time: {}".format(datetime.now() + timedelta(seconds=t)))
-                sleep(t)
-                wake_up_time = datetime.now()
-                waking_up = True
-                print("Waking up at {}".format(wake_up_time))
 
-            if not waking_up:
-                # Sleep for between 1 and 2 hours
-                t1 = randint(3600, 7200)
-                # t2 is an offset that can be anywhere from 0 to 30 minutes
-                t2 = randint(0, 1800)
-                # This allows us to sleep for a random amount of time between 1 and 2.5 hours.
-                # This helps to prevent the daemon from being detected by the site as a bot.
-                # To my knowledge, this type of detection isn't used by the site, but it's
-                # better to be safe than sorry.
-                t = t1 + t2
-                print("Sleeping for {} hours".format(t/3600))
-                print("Wake up time: {}".format(datetime.now() + timedelta(seconds=t)))
-                sleep(t)
-                print("Waking up at {}".format(datetime.now()))
-            else:
-                waking_up = False
 
 
 def main():
