@@ -8,6 +8,8 @@ r"""
 """
 
 import httpx
+from utils.endpoints import endpoint
+
 
 from ..constants import (
     timelineEP, timelineNextEP,
