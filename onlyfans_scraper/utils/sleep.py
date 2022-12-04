@@ -7,8 +7,8 @@ from time import sleep
 
 max_hours_for_long_sleep = 12
 min_hours_for_long_sleep = 6
-max_seconds_for_short_sleep = 3
-min_seconds_for_short_sleep = 1
+max_seconds_for_short_sleep = 7200
+min_seconds_for_short_sleep = 1500
 work_start = 9
 work_end = 17
 max_minutes_for_variance = 20
