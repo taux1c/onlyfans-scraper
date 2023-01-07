@@ -6,11 +6,13 @@ r"""
  \___/ |_| |_||_| \__, ||_|   \__,_||_| |_||___/       |___/ \___||_|    \__,_|| .__/  \___||_|
                   |___/                                                        |_|
 """
+from urllib.request import urlopen
+
 from ..constants import purchased_contentEP
 from ..utils import auth, config
 import httpx
 import webbrowser
-import requests
+import urllib
 
 
 def scrape_paid():
@@ -50,13 +52,10 @@ def scrape_paid():
 
 def download_paid(media):
     """Takes a list of purchased content and downloads it."""
-    with requests.session() as s:
-        headers = auth.make_headers(auth.read_auth())
-        s.headers.update(headers)
-        for item in media:
-            real_url = s.get(item).url
-            print(real_url)
-        # webbrowser.open(item)
+    for url in media:
+        response = urlopen(url)
+        filename = response.headers.get_filename()
+        print(filename)
 
 
 
