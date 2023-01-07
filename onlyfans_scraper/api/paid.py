@@ -62,10 +62,11 @@ def download_paid(media):
             rheaders = r.headers
             last_modified = rheaders.get("last-modified")
             file_name = rheaders.get("etag").replace('"','')
+            content_type = rheaders.get("content-type").split('/')[-1]
             print(rheaders)
-            #
-            # with open(pathlib.Path(save_location,file_name,"-",last_modified,""), 'wb') as f:
-            #     f.write(r.content)
+
+            with open(pathlib.Path(save_location,file_name,"-",last_modified,".",content_type), 'wb') as f:
+                f.write(r.content)
 
 
 
