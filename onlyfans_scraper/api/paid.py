@@ -52,8 +52,7 @@ def download_paid(media):
     """Takes a list of purchased content and downloads it."""
     with requests.session() as s:
         headers = auth.make_headers(auth.read_auth())
-        s.set_headers = headers
-        auth.add_cookies(s)
+        s.headers.update(headers)
         for item in media:
             real_url = s.get(item).url
             print(real_url)
