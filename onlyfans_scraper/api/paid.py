@@ -63,6 +63,8 @@ def download_paid(media):
             last_modified = rheaders.get("last-modified")
             file_name = rheaders.get("etag").replace('"','')
             content_type = rheaders.get("content-type").split('/')[-1]
+            if not content_type:
+                content_type = "jpg"
             pathlib.Path.mkdir(save_location,parents=True,exist_ok=True)
             with open(pathlib.Path(save_location,"{}-{}.{}".format(file_name,last_modified,content_type)), 'wb') as f:
                 f.write(r.content)
