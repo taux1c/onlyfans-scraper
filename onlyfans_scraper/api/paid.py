@@ -25,11 +25,12 @@ def scrape_paid(headers):
             r = c.get(url, timeout=None)
             if not r.is_error:
                 print(r.json())
-                # purchased_content = r.json()['list']
-                # hasMore = r.json()['hasMore']
-                # for media in purchased_content:
-                #     media_to_download.append(media)
-                #
+                purchased_content = r.json()['list']
+                hasMore = r.json()['hasMore']
+                offset +=10
+                for media in purchased_content:
+                    media_to_download.append(media)
+
 
     return media_to_download
 
