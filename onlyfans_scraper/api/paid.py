@@ -34,7 +34,9 @@ def scrape_paid():
                 if "hasMore" in r.json():
                     hasMore = r.json()['hasMore']
                 content = r.json()['list'][0]
-                print(content)
+                for item in content:
+                    print(item)
+                    print("\n\n\n\n")
 
 
 
