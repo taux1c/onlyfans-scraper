@@ -58,6 +58,7 @@ def download_paid(media):
         for item in media:
             r = c.get(item)
             rheaders = r.headers
+            print(rheaders)
             file_name = rheaders.get("etag")
             print(file_name)
 
