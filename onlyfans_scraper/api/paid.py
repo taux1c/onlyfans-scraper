@@ -63,7 +63,7 @@ def download_paid(media):
             rheaders = r.headers
             last_modified = rheaders.get("last-modified")
             file_name = rheaders.get("etag").replace('"','')
-            with open(pathlib.Path(config.))
+
 
 
 
