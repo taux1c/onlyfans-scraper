@@ -333,6 +333,8 @@ def silent_run():
     subscribe_count = process_me(headers)
     parsed_subscriptions = get_models(headers, subscribe_count)
     usernames = get_usernames(parsed_subscriptions)
+    paid_content = paid.scrape_paid()
+    paid.download_paid(paid_content)
 
     for username in usernames:
         try:
