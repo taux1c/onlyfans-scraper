@@ -30,6 +30,9 @@ def scrape_paid(headers):
                 offset +=10
                 for media in purchased_content:
                     media_to_download.append(media)
+                print("offset = {}".format(offset))
+                print("hasmore = {}".format(hasMore))
+                input("press any key to continue.")
 
 
     return media_to_download
