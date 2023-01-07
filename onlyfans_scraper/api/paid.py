@@ -19,20 +19,17 @@ def scrape_paid(headers):
     hasMore = True
     url = purchased_contentEP.format(offset)
     with httpx.Client(http2=True, headers=headers) as c:
+        round = 1
         while hasMore:
+            round +=1
+            print("round {}".format(round))
+            headers = auth.make_headers(auth.read_auth())
             auth.add_cookies(c)
             c.headers.update(auth.create_sign(url, headers))
             r = c.get(url, timeout=None)
             if not r.is_error:
-                print(r.json())
-                purchased_content = r.json()['list']
                 hasMore = r.json()['hasMore']
-                offset +=10
-                for media in purchased_content:
-                    media_to_download.append(media)
-                print("offset = {}".format(offset))
-                print("hasmore = {}".format(hasMore))
-                input("press any key to continue.")
+                print(r.json())
 
 
     return media_to_download
