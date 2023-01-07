@@ -52,10 +52,13 @@ def scrape_paid():
 
 def download_paid(media):
     """Takes a list of purchased content and downloads it."""
-    for url in media:
-        response = urlopen(url)
-        filename = response.headers.get_filename()
-        print(filename)
+    headers = auth.make_headers(auth.read_auth())
+    with httpx.Client(http2=True, headers=headers, follow_redirects=True) as c:
+        auth.add_cookies(c)
+        for item in media:
+            r = c.get(item)
+            print(r.headers)
+
 
 
 
