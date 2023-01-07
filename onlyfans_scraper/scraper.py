@@ -419,6 +419,7 @@ def main():
         print("This feature is still under development and may not function correctly if at all.")
         headers = auth.make_headers(auth.read_auth())
         init.print_sign_status(headers)
+        paid.scrape_paid(headers)
 
 
 
