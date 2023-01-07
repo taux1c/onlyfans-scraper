@@ -39,13 +39,6 @@ def scrape_paid():
                             media_to_download.append(source['source'])
                         else:
                             media_to_download.append(src['src'])
-
-
-
-
-
-
-    print(media_to_download)
     return media_to_download
 
 
