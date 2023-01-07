@@ -26,6 +26,7 @@ def scrape_paid():
             headers = auth.make_headers(auth.read_auth())
             auth.add_cookies(c)
             url = purchased_contentEP.format(offset)
+            offset += 10
             c.headers.update(auth.create_sign(url, headers))
             r = c.get(url, timeout=None)
             if not r.is_error:
