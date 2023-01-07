@@ -35,8 +35,9 @@ def scrape_paid():
                     hasMore = r.json()['hasMore']
                 content = r.json()['list']
                 for item in content:
-                    print(item)
-                    print("\n\n\n\n")
+                    # message = item.message
+                    media = [_ for _ in item['media']]
+                    print(media)
 
 
 
