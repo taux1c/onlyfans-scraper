@@ -31,12 +31,13 @@ def scrape_paid():
             c.headers.update(auth.create_sign(url, headers))
             r = c.get(url, timeout=None)
             if not r.is_error:
-                hasMore = r.json()['hasMore']
+                if "hasMore" in r.json():
+                    hasMore = r.json()['hasMore']
                 for item in r.json():
-                    print(item)
                     if isinstance(item,list):
-                        if len(item) > 0:
-                            print("Found it!")
+                        print(item)
+                        print(len(item))
+
 
 
 
