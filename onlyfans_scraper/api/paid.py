@@ -57,7 +57,9 @@ def download_paid(media):
         auth.add_cookies(c)
         for item in media:
             r = c.get(item)
-            print(r.headers)
+            rheaders = r.headers
+            file_name = rheaders.get("etag")
+            print(file_name)
 
 
 
