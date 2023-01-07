@@ -36,8 +36,7 @@ def scrape_paid():
                     print(item)
                     if isinstance(item,list):
                         if len(item) > 0:
-                            if "media" in item[0]:
-                                print("Found it!")
+                            print("Found it!")
 
 
 
