@@ -13,7 +13,7 @@ from ..utils import auth, config
 import httpx
 import webbrowser
 import urllib
-
+import pathlib
 
 def scrape_paid():
     """Takes headers to access onlyfans as an argument and then checks the purchased content
@@ -52,6 +52,9 @@ def scrape_paid():
 
 def download_paid(media):
     """Takes a list of purchased content and downloads it."""
+    cfg = config.read_config()
+    save_location = pathlib.Path(cfg.get("save_location"))
+    print(save_location)
     headers = auth.make_headers(auth.read_auth())
     with httpx.Client(http2=True, headers=headers, follow_redirects=True) as c:
         auth.add_cookies(c)
@@ -59,8 +62,9 @@ def download_paid(media):
             r = c.get(item)
             rheaders = r.headers
             last_modified = rheaders.get("last-modified")
-            file_name = rheaders.get("etag")
-            print("{}-{}".format(file_name.replace('"',''),last_modified))
+            file_name = rheaders.get("etag").replace('"','')
+            with open(pathlib.Path(config.))
+
 
 
 
