@@ -18,6 +18,7 @@ def scrape_paid():
     offset = 0
     hasMore = True
     headers = auth.make_headers(auth.read_auth())
+    content = ""
     with httpx.Client(http2=True, headers=headers) as c:
         round = 1
         while hasMore:
@@ -31,7 +32,13 @@ def scrape_paid():
             r = c.get(url, timeout=None)
             if not r.is_error:
                 hasMore = r.json()['hasMore']
-                print(r.json())
+                for item in r.json():
+                    print(item)
+                    if isinstance(item,list):
+                        if len(item) > 0:
+                            if "media" in item[0]:
+                                print("Found it!")
+
 
 
     return media_to_download

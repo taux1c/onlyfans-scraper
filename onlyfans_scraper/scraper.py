@@ -419,7 +419,7 @@ def main():
         print("This feature is still under development and may not function correctly if at all.")
         paid_content = paid.scrape_paid()
         paid.download_paid(paid_content)
-        sys.exit(__status="Finished")
+        sys.exit()
 
 
 
