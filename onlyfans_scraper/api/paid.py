@@ -18,6 +18,7 @@ def scrape_paid():
     offset = 0
     hasMore = True
     url = purchased_contentEP.format(offset)
+    headers = auth.make_headers(auth.read_auth())
     with httpx.Client(http2=True, headers=headers) as c:
         round = 1
         while hasMore:
