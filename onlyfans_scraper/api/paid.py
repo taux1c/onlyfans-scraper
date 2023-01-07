@@ -54,7 +54,6 @@ def download_paid(media):
         headers = auth.make_headers(auth.read_auth())
         s.set_headers = headers
         auth.add_cookies(s)
-        init.print_sign_status(headers)
         for item in media:
             real_url = s.get(item).url
             print(real_url)
