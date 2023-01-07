@@ -36,9 +36,9 @@ def scrape_paid():
                         if "source" in i:
                             source = i['source']
                         if source:
-                            media_to_download.append(source)
+                            media_to_download.append(source[1])
                         else:
-                            media_to_download.append(src)
+                            media_to_download.append(src[1])
 
 
 
