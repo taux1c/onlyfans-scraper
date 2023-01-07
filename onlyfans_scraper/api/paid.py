@@ -24,10 +24,12 @@ def scrape_paid(headers):
             c.headers.update(auth.create_sign(url, headers))
             r = c.get(url, timeout=None)
             if not r.is_error:
-                purchased_content = r.json()['list']
-                hasMore = r.json()['hasMore']
-                for media in purchased_content:
-                    media_to_download.append(media)
+                print(r.json())
+                # purchased_content = r.json()['list']
+                # hasMore = r.json()['hasMore']
+                # for media in purchased_content:
+                #     media_to_download.append(media)
+                #
 
     return media_to_download
 
