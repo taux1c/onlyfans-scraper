@@ -19,7 +19,7 @@ def scrape_paid():
     offset = 0
     hasMore = True
     headers = auth.make_headers(auth.read_auth())
-    with httpx.Client(http2=True, headers=headers) as c:
+    with httpx.Client(http2=True, headers=headers, follow_redirects=True) as c:
         while hasMore:
             headers = auth.make_headers(auth.read_auth())
             auth.add_cookies(c)
@@ -32,21 +32,27 @@ def scrape_paid():
                     hasMore = r.json()['hasMore']
                 for item in r.json()['list']:
                     for i in item['media']:
-                        if "src" in i:
-                            src = i['src']
                         if "source" in i:
-                            source = i['source']
-                        if source:
-                            media_to_download.append(source['source'])
-                        else:
-                            media_to_download.append(src['src'])
+                            media_url = c.get(i['source']).url
+                            media_to_download.append(media_url)
+
+
+                        # if "src" in i:
+                        #     src = i['src']
+                        # if "source" in i:
+                        #     source = i['source']
+                        # if source:
+                        #     media_to_download.append(source['source'])
+                        # else:
+                        #     media_to_download.append(src['src'])
     return media_to_download
 
 
 def download_paid(media):
     """Takes a list of purchased content and downloads it."""
     for item in media:
-        webbrowser.open(item)
+        print(item)
+        # webbrowser.open(item)
 
 
 
