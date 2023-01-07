@@ -33,7 +33,7 @@ def scrape_paid():
                 for item in r.json()['list']:
                     for i in item['media']:
                         if "source" in i:
-                            media_url = c.get(i['source']).url
+                            media_url = c.get(i['source']['source']).url
                             media_to_download.append(media_url)
 
 
