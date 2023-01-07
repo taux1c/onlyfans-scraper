@@ -45,8 +45,8 @@ def scrape_paid():
 
 def download_paid(media):
     """Takes a list of purchased content and downloads it."""
-        for item in media:
-            webbrowser.open(item)
+    for item in media:
+        webbrowser.open(item)
 
 
 
