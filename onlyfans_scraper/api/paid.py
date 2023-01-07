@@ -52,8 +52,7 @@ def scrape_paid():
 
 def download_paid(media):
     """Takes a list of purchased content and downloads it."""
-    cfg = config.read_config()
-    save_location = pathlib.Path(cfg.get("save_location"))
+    save_location = pathlib.Path('./paid_content/')
     print(save_location)
     headers = auth.make_headers(auth.read_auth())
     with httpx.Client(http2=True, headers=headers, follow_redirects=True) as c:
@@ -63,6 +62,10 @@ def download_paid(media):
             rheaders = r.headers
             last_modified = rheaders.get("last-modified")
             file_name = rheaders.get("etag").replace('"','')
+            print(rheaders)
+            #
+            # with open(pathlib.Path(save_location,file_name,"-",last_modified,""), 'wb') as f:
+            #     f.write(r.content)
 
 
 
