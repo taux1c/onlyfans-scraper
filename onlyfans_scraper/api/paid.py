@@ -65,7 +65,7 @@ def download_paid(media):
             content_type = rheaders.get("content-type").split('/')[-1]
             print(rheaders)
             pathlib.Path.mkdir(save_location,parents=True,exist_ok=True)
-            with open(pathlib.Path(save_location,file_name,"-",last_modified,".",content_type), 'wb') as f:
+            with open(pathlib.Path(save_location,"{}-{}.{}".format(file_name,last_modified,content_type)), 'wb') as f:
                 f.write(r.content)
 
 
