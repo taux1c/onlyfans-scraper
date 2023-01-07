@@ -7,8 +7,9 @@ r"""
                   |___/                                                        |_|
 """
 from ..constants import purchased_contentEP
-from ..utils import auth
+from ..utils import auth, config
 import httpx
+import re
 
 
 def scrape_paid():
@@ -44,5 +45,15 @@ def scrape_paid():
 
 def download_paid(media):
     """Takes a list of purchased content and downloads it."""
-    for item in media:
-        print(item)
+    save_location = config.get('save_location') + "Paid Content"
+    headers = auth.make_headers(auth.read_auth())
+    with httpx.AsyncClient( http2=True, headers=headers) as client:
+        auth.add_cookies(client)
+        for item in media:
+            r = client.get(item)
+            d = r.headers['content-disposition']
+            fname = re.findall("filename=", d)[0]
+            print(fname)
+
+
+
