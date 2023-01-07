@@ -45,10 +45,6 @@ def scrape_paid():
 
 def download_paid(media):
     """Takes a list of purchased content and downloads it."""
-
-    headers = auth.make_headers(auth.read_auth())
-    with httpx.AsyncClient( http2=True, headers=headers) as client:
-        auth.add_cookies(client)
         for item in media:
             webbrowser.open(item)
 
