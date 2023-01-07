@@ -9,7 +9,7 @@ r"""
 from ..constants import purchased_contentEP
 from ..utils import auth, config
 import httpx
-import re
+import webbrowser
 
 
 def scrape_paid():
@@ -50,10 +50,7 @@ def download_paid(media):
     with httpx.AsyncClient( http2=True, headers=headers) as client:
         auth.add_cookies(client)
         for item in media:
-            r = client.get(item)
-            d = r.headers['content-disposition']
-            fname = re.findall("filename=", d)[0]
-            print(fname)
+            webbrowser.open(item)
 
 
 
