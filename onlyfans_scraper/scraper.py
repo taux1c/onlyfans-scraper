@@ -17,31 +17,13 @@ from random import randint, choice
 from time import sleep
 from datetime import datetime, timedelta
 
-from .api import init, highlights, me, messages, posts, profile, subscriptions
+from .constants import donateEP
+from .api import init, highlights, me, messages, posts, profile, subscriptions, paid
 from .db import operations
 from .interaction import like
 from .utils import auth, config, download, profiles, prompts
-
+import webbrowser
 from revolution import Revolution
-
-
-# silent = False
-#
-# def need_revolution(message):
-#     def decorator(func):
-#         def wrapper(*args, **kwargs):
-#             if silent:
-#                 func(*args, **kwargs)
-#             if not silent:
-#                 @Revolution(desc=message)
-#                 def dec(*args,**kwargs):
-#                     func(*args, **kwargs)
-#                 return dec(*args, **kwargs)
-#
-#         return wrapper
-#     return decorator
-
-
 
 
 # @need_revolution("Getting messages...")
@@ -399,6 +381,11 @@ def daemon():
 def main():
     if platform.system == 'Windows':
         os.system('color')
+    try:
+        webbrowser.open(donateEP)
+    except:
+        pass
+
 
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -409,8 +396,11 @@ def main():
     parser.add_argument(
         '-a', '--all', help='scrape the content of all users', action='store_true')
     parser.add_argument(
-        '-d', '--daemon', help='This will run the program in the background and scrape everything from everyone. It will run untill manually killed.', action='store_true')
-
+        '-d', '--daemon', help='This will run the program in the background and scrape everything from everyone. It will run untill manually killed.', action='store_true'
+    )
+    parser.add_argument(
+        '-p', '--purchased', help = 'Download only individually purchased content.', action = 'store_true'
+    )
     args = parser.parse_args()
     if args.edit:
         pass
@@ -425,6 +415,11 @@ def main():
         sys.exit()
     if args.daemon:
         daemon()
+    if args.purchased:
+        print("This feature is still under development and may not function correctly if at all.")
+        headers = auth.make_headers(auth.read_auth())
+        init.print_sign_status(headers)
+        paid.download_paid(paid.scrape_paid(headers))
 
 
     try:
