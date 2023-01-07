@@ -58,9 +58,9 @@ def download_paid(media):
         for item in media:
             r = c.get(item)
             rheaders = r.headers
-            print(rheaders)
+            last_modified = rheaders.get("last-modified")
             file_name = rheaders.get("etag")
-            print(file_name)
+            print("{}-{}".format(file_name,last_modified))
 
 
 
