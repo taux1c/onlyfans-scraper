@@ -42,6 +42,8 @@ postURL = 'https://onlyfans.com/{}/{}'
 
 DC_EP = 'https://raw.githubusercontent.com/DATAHOARDERS/dynamic-rules/main/onlyfans.json'
 
+purchased_contentEP = "https://onlyfans.com/api2/v2/posts/paid?limit=10&skip_users=all&format=infinite&offset={}"
+
 mainPromptChoices = {
     'Download content from a user': 0,
     'Like all of a user\'s posts': 1,
