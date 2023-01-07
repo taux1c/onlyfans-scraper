@@ -33,9 +33,8 @@ def scrape_paid():
             if not r.is_error:
                 if "hasMore" in r.json():
                     hasMore = r.json()['hasMore']
-                for item in r.json():
-                    if isinstance(r.json[item],list):
-                        print(r.json()[item])
+                content = r.json['list']
+                print(content)
 
 
 
