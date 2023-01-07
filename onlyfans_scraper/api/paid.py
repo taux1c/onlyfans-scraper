@@ -17,7 +17,6 @@ def scrape_paid():
     media_to_download = []
     offset = 0
     hasMore = True
-    url = purchased_contentEP.format(offset)
     headers = auth.make_headers(auth.read_auth())
     with httpx.Client(http2=True, headers=headers) as c:
         round = 1
@@ -26,6 +25,7 @@ def scrape_paid():
             print("round {}".format(round))
             headers = auth.make_headers(auth.read_auth())
             auth.add_cookies(c)
+            url = purchased_contentEP.format(offset)
             c.headers.update(auth.create_sign(url, headers))
             r = c.get(url, timeout=None)
             if not r.is_error:
