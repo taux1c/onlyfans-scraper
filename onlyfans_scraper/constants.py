@@ -52,7 +52,7 @@ mainPromptChoices = {
     'Unlike all of a user\'s posts': 2,
     'Migrate an old database': 3,
     'Edit `auth.json` file': 4,
-    'Profiles': 5
+    'Profiles': 5,
     'Download Paid Content': 6
 }
 usernameOrListChoices = {
