@@ -51,7 +51,7 @@ def scrape_paid():
 
 def download_paid(media):
     """Takes a list of purchased content and downloads it."""
-    save_location = './paid_content/'
+    save_location = './paid_content'
     headers = auth.make_headers(auth.read_auth())
     with httpx.Client(http2=True, headers=headers, follow_redirects=True) as c:
         auth.add_cookies(c)
