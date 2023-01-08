@@ -280,8 +280,12 @@ def process_prompts():
         config.edit_config()
 
         loop()
-
     elif result_main_prompt == 6:
+        print("The screen will be blank while this runs.")
+        paid_content = paid.scrape_paid()
+        paid.download_paid(paid_content)
+
+    elif result_main_prompt == 7:
         # Display  `Profiles` menu
         result_profiles_prompt = prompts.profiles_prompt()
 

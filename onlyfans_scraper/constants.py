@@ -53,6 +53,7 @@ mainPromptChoices = {
     'Migrate an old database': 3,
     'Edit `auth.json` file': 4,
     'Profiles': 5
+    'Download Paid Content': 6
 }
 usernameOrListChoices = {
     'Print a list of my subscriptions': 0,
