@@ -62,7 +62,7 @@ def download_paid(media):
             file_name = re.escape(rheaders.get("etag").replace('"',''))
             content_type = rheaders.get("content-type").split('/')[-1]
             pathlib.Path.mkdir(pathlib.Path(save_location),parents=True,exist_ok=True)
-            file = pathlib.Path(save_loacation,file_name,last_modified.replace(":","-"),content_type)
+            file = pathlib.Path(save_location,file_name,last_modified.replace(":","-"),content_type)
             #file = "{}/{}-{}.{}".format(save_location,file_name,last_modified.replace(':','-').replace('\','-'),content_type)
             with open(file, 'wb') as f:
                 print("Downloading: {}".format(file))
