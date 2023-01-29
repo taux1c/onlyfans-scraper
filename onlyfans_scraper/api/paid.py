@@ -51,7 +51,8 @@ def scrape_paid():
 
 def download_paid(media):
     """Takes a list of purchased content and downloads it."""
-    save_location = './paid_content'
+    users_save_location = r'./paid_content'
+    save_location = users_save_location.replace('\\','/')
     headers = auth.make_headers(auth.read_auth())
     with httpx.Client(http2=True, headers=headers, follow_redirects=True) as c:
         auth.add_cookies(c)
@@ -59,13 +60,14 @@ def download_paid(media):
             r = c.get(item)
             rheaders = r.headers
             last_modified = rheaders.get("last-modified")
-            file_name = re.escape(rheaders.get("etag").replace('"',''))
-            content_type = rheaders.get("content-type").split('/')[-1]
-            pathlib.Path.mkdir(pathlib.Path(save_location),parents=True,exist_ok=True)
-            file = "{}/{}-{}.{}".format(save_location,file_name,last_modified.replace(':','-'),content_type)
-            with open(file, 'wb') as f:
-                print("Downloading: {}".format(file))
-                f.write(r.content)
+            file_name = item.spit('.')[-2]
+            print(file_name)
+            # content_type = rheaders.get("content-type").split('/')[-1]
+            # pathlib.Path.mkdir(pathlib.Path(save_location),parents=True,exist_ok=True)
+            # file = "{}/{}-{}.{}".format(save_location,file_name,last_modified.replace(':','-'),content_type)
+            # with open(file, 'wb') as f:
+            #     print("Downloading: {}".format(file))
+            #     f.write(r.content)
 
 
 

@@ -1,5 +1,7 @@
-httpx[http2]
-InquirerPy
-revolution
-tqdm
+httpx[http2]~=0.23.3
+InquirerPy~=0.3.4
+revolution~=0.3.0
+tqdm~=4.64.1
 win32_setctime
+
+setuptools~=57.0.0
