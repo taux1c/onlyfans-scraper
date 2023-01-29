@@ -62,7 +62,7 @@ def download_paid(media):
             last_modified = rheaders.get("last-modified")
             file_name = item.split('.')[-2].strip('/\\,-_!@;')
 
-            print(file_name)
+            print("File name is \"{}\"".format(file_name))
             # content_type = rheaders.get("content-type").split('/')[-1]
             # pathlib.Path.mkdir(pathlib.Path(save_location),parents=True,exist_ok=True)
             # file = "{}/{}-{}.{}".format(save_location,file_name,last_modified.replace(':','-'),content_type)
