@@ -1,6 +1,6 @@
 <h1>Locations</h1>
 
-Telegram: https://t.me/+ajP69yhLcPZiMGZh
+
 
 
 Discord Server: https://discord.gg/x9HCByhPTC
