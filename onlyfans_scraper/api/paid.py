@@ -54,8 +54,7 @@ def scrape_paid():
 
 def download_paid(media):
     """Takes a list of purchased content and downloads it."""
-    users_save_location = pathlib.Path.joinpath(config.get('save_location'),'Paid Content')
-    save_location = users_save_location.replace('\\','/')
+    save_location = pathlib.Path.joinpath(config.get('save_location'),'Paid Content')
     headers = auth.make_headers(auth.read_auth())
     with httpx.Client(http2=True, headers=headers, follow_redirects=True) as c:
         auth.add_cookies(c)
