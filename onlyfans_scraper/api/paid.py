@@ -13,8 +13,36 @@ from ..utils import auth
 import httpx
 import pathlib
 from ..utils.config import read_config
+from hashlib import md5
+import sqlite3 as sql
 config = read_config()['config']
 paid_content_list_name = 'list'
+
+save_location = pathlib.Path(config.get('save_location'), 'Paid Content')
+
+#  SQL SETUP
+
+db = sql.connect(pathlib.Path(save_location, 'paid.db'))
+cursor = db.cursor()
+
+
+
+# COMMANDS FOR SQL
+
+create_table_command = "CREATE TABLE IF NOT EXISTS hashes(id integer PRIMARY KEY, hash text, file_name text)"
+
+def add_to_db(hash,file_name):
+    cursor.execute(create_table_command)
+    print("The hash is {}".format(hash))
+    print("The file name is {}".format(file_name))
+    print("This is for testing purposes.")
+
+
+
+
+
+
+
 def scrape_paid():
     """Takes headers to access onlyfans as an argument and then checks the purchased content
     url to look for any purchased content. If it finds some it will return it as a list."""
@@ -44,7 +72,6 @@ def scrape_paid():
 
 def download_paid(media):
     """Takes a list of purchased content and downloads it."""
-    save_location = pathlib.Path(config.get('save_location'),'Paid Content')
     headers = auth.make_headers(auth.read_auth())
     with httpx.Client(http2=True, headers=headers, follow_redirects=True) as c:
         auth.add_cookies(c)
@@ -56,9 +83,13 @@ def download_paid(media):
             content_type = rheaders.get("content-type").split('/')[-1]
             pathlib.Path.mkdir(pathlib.Path(save_location),parents=True,exist_ok=True)
             file = "{}/{}-{}.{}".format(save_location,file_name,last_modified.replace(':','-'),content_type)
+            hash = md5(r.content)
+            add_to_db(hash,file_name)
             with open(file, 'wb') as f:
                 print("Downloading: {}".format(file))
                 f.write(r.content)
+
+
 
 
 
