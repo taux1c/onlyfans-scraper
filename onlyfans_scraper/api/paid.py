@@ -16,9 +16,6 @@ import pathlib
 from ..utils.config import read_config
 
 
-config = read_config()
-for x in config:
-    print(x)
 def scrape_paid():
     """Takes headers to access onlyfans as an argument and then checks the purchased content
     url to look for any purchased content. If it finds some it will return it as a list."""
@@ -51,7 +48,12 @@ def scrape_paid():
                         #     media_to_download.append(source['source'])
                         # else:
                         #     media_to_download.append(src['src'])
-    return media_to_download
+
+    config = read_config()
+    for x in config:
+        print(x)
+    return []
+    # return media_to_download
 
 
 def download_paid(media):
