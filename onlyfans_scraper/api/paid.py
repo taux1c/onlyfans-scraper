@@ -9,11 +9,16 @@ r"""
 from urllib.request import urlopen
 
 from ..constants import purchased_contentEP
-from ..utils import auth, config
+from ..utils import auth
 import httpx
 import re
 import pathlib
+from ..utils.config import read_config
 
+
+config = read_config()
+for x in config:
+    print(x)
 def scrape_paid():
     """Takes headers to access onlyfans as an argument and then checks the purchased content
     url to look for any purchased content. If it finds some it will return it as a list."""
