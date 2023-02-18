@@ -49,7 +49,7 @@ def scrape_paid():
                         # else:
                         #     media_to_download.append(src['src'])
 
-    config = read_config()
+    config = read_config()['config']
     for x in config:
         print(x)
     return []
