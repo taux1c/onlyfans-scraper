@@ -33,7 +33,7 @@ create_table_command = "CREATE TABLE IF NOT EXISTS hashes(id integer PRIMARY KEY
 
 def add_to_db(hash,file_name):
     cursor.execute(create_table_command)
-    print("The hash is {}".format(hash))
+    print("The hash is {}".format(hash.hexdigest()))
     print("The file name is {}".format(file_name))
     print("This is for testing purposes.")
 
