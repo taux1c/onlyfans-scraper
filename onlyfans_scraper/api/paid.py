@@ -11,10 +11,9 @@ from urllib.request import urlopen
 from ..constants import purchased_contentEP
 from ..utils import auth
 import httpx
-import re
 import pathlib
 from ..utils.config import read_config
-
+config = read_config()['config']
 
 def scrape_paid():
     """Takes headers to access onlyfans as an argument and then checks the purchased content
@@ -49,16 +48,13 @@ def scrape_paid():
                         # else:
                         #     media_to_download.append(src['src'])
 
-    config = read_config()['config']
-    for x in config:
-        print(x)
-    return []
-    # return media_to_download
+
+    return media_to_download
 
 
 def download_paid(media):
     """Takes a list of purchased content and downloads it."""
-    users_save_location = r'./paid_content'
+    users_save_location = pathlib.Path.joinpath(config.get('save_location'),'Paid Content')
     save_location = users_save_location.replace('\\','/')
     headers = auth.make_headers(auth.read_auth())
     with httpx.Client(http2=True, headers=headers, follow_redirects=True) as c:
