@@ -282,7 +282,6 @@ def process_prompts():
 
         loop()
     elif result_main_prompt == 6:
-        print("The screen will be blank while this runs.")
         paid_content = paid.scrape_paid()
         paid.download_paid(paid_content)
 

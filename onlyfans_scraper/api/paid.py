@@ -14,7 +14,7 @@ import httpx
 import pathlib
 from ..utils.config import read_config
 config = read_config()['config']
-
+paid_content_list_name = 'list'
 def scrape_paid():
     """Takes headers to access onlyfans as an argument and then checks the purchased content
     url to look for any purchased content. If it finds some it will return it as a list."""
@@ -33,22 +33,12 @@ def scrape_paid():
             if not r.is_error:
                 if "hasMore" in r.json():
                     hasMore = r.json()['hasMore']
-                for item in r.json()['list']:
+                # THIS NEEDS TO BE REWORKED TO WORK LIKE HIGHLIGHTS AND FIGURE OUT THE LIST NAME HAVEN'T HAD TIME.
+                for item in r.json()[paid_content_list_name]:
                     for i in item['media']:
                         if "source" in i:
                             media_to_download.append(i['source']['source'])
-
-
-                        # if "src" in i:
-                        #     src = i['src']
-                        # if "source" in i:
-                        #     source = i['source']
-                        # if source:
-                        #     media_to_download.append(source['source'])
-                        # else:
-                        #     media_to_download.append(src['src'])
-
-
+                            print("Adding {} to the downloads list.".format(i['source']['source']))
     return media_to_download
 
 
