@@ -19,7 +19,7 @@ config = read_config()['config']
 paid_content_list_name = 'list'
 
 save_location = pathlib.Path(config.get('save_location'), 'Paid Content')
-
+save_location.mkdir(parents=True,exist_ok=True)
 #  SQL SETUP
 
 db = sql.connect(pathlib.Path(save_location, 'paid.db'))
