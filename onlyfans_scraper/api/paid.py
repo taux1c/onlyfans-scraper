@@ -37,7 +37,6 @@ def add_to_db(hash,file_name):
     results = cursor.fetchall()
     if len(results) > 0:
         return False
-    cursor.execute("")
     cursor.execute("""INSERT INTO hashes(hash,file_name) VALUES(?,?)""",(hash.hexdigest(),file_name))
     db.commit()
     return True
