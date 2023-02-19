@@ -36,9 +36,8 @@ def add_to_db(hash,file_name):
     cursor.execute(f"SELECT * FROM hashes WHERE hash='{hash.hexdigest()}'")
     results = cursor.fetchall()
     if len(results) > 0:
+        print("Working in the background. Simmer down.")
         return False
-    print(len(results))
-    print(results)
     cursor.execute("""INSERT INTO hashes(hash,file_name) VALUES(?,?)""",(hash.hexdigest(),file_name))
     db.commit()
     return True
@@ -73,7 +72,7 @@ def scrape_paid():
                     for i in item['media']:
                         if "source" in i:
                             media_to_download.append(i['source']['source'])
-                            print("Adding {} to the downloads list.".format(i['source']['source']))
+                            print("Scraping, it isn't frozen. It takes time.")
     return media_to_download
 
 
