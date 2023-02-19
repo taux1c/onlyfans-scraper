@@ -40,6 +40,7 @@ def add_to_db(hash,file_name):
     cursor.execute("")
     cursor.execute("""INSERT INTO hashes(hash,file_name) VALUES(?,?)""",(hash.hexdigest(),file_name))
     db.commit()
+    return True
 
 
 
