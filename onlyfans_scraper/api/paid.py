@@ -32,7 +32,7 @@ create_table_command = "CREATE TABLE IF NOT EXISTS hashes(id integer PRIMARY KEY
 def add_to_db(hash,file_name):
     """Returns True if hash was not in the database and file can continue."""
     cursor.execute(create_table_command)
-    cursor.execute(f"SELECT FROM hashes WHERE hash='{hash}'")
+    cursor.execute(f"SELECT hash FROM hashes WHERE hash='{hash}'")
     db.commit()
     results = cursor.fetchall()
     if len(results) > 0:
