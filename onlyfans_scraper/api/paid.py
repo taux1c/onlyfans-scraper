@@ -33,7 +33,7 @@ def add_to_db(hash,file_name):
     """Returns True if hash was not in the database and file can continue."""
     cursor.execute(create_table_command)
     db.commit()
-    cursor.execute(f"SELECT * FROM hashes WHERE hash='{hash}'")
+    cursor.execute(f"SELECT * FROM hashes WHERE hash='{hash.hexdigest()}'")
     results = cursor.fetchall()
     if len(results) > 0:
         return False
