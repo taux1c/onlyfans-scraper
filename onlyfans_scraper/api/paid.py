@@ -25,17 +25,22 @@ save_location = pathlib.Path(config.get('save_location'), 'Paid Content')
 db = sql.connect(pathlib.Path(save_location, 'paid.db'))
 cursor = db.cursor()
 
-
-
-# COMMANDS FOR SQL
-
 create_table_command = "CREATE TABLE IF NOT EXISTS hashes(id integer PRIMARY KEY, hash text, file_name text)"
 
+
+
 def add_to_db(hash,file_name):
+    """Returns True if hash was not in the database and file can continue."""
     cursor.execute(create_table_command)
-    print("The hash is {}".format(hash.hexdigest()))
-    print("The file name is {}".format(file_name))
-    print("This is for testing purposes.")
+    cursor.execute(f"SELECT FROM hashes WHERE hash='{hash}'")
+    db.commit()
+    results = cursor.fetchall()
+    if len(results) > 0:
+        return False
+    cursor.execute("")
+    cursor.execute("""INSERT INTO hashes(hash,file_name) VALUES(?,?)""",(hash,file_name))
+    db.commit()
+
 
 
 
@@ -84,10 +89,10 @@ def download_paid(media):
             pathlib.Path.mkdir(pathlib.Path(save_location),parents=True,exist_ok=True)
             file = "{}/{}-{}.{}".format(save_location,file_name,last_modified.replace(':','-'),content_type)
             hash = md5(r.content)
-            add_to_db(hash,file_name)
-            with open(file, 'wb') as f:
-                print("Downloading: {}".format(file))
-                f.write(r.content)
+            if add_to_db(hash,file_name):
+                with open(file, 'wb') as f:
+                    print("Downloading: {}".format(file))
+                    f.write(r.content)
 
 
 
