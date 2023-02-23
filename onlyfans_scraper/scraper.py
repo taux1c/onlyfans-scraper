@@ -358,7 +358,8 @@ def daemon():
         except Exception as e:
             print("Daemon failed with exception: ", e)
         finally:
-            nap_or_sleep()
+            s = nap_or_sleep()
+            sleep(s)
 
 
 
