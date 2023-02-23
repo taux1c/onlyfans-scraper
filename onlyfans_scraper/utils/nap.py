@@ -5,7 +5,7 @@ last_long_sleep = datetime.now()
 last_short_sleep = datetime.now()
 def calculate_sleep():
     if datetime.now() - last_long_sleep >= timedelta(hours=16):
-        return 57_600
+        return 28800
     return 7200
 
 
