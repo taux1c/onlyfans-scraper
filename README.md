@@ -3,13 +3,7 @@
 
 
 
-Discord Server: https://discord.gg/x9HCByhPTC
-
-
-Space: https://taux1c.jetbrains.space/p/onlyfans-scraper/repositories/onlyfans-scraper/
-
-
-GitHub: https://github.com/taux1c/onlyfans-scraper
+Discord Server: https://discord.gg/SFmPxnfZ5a
 
 
 If you're too lazy to read the rest of this someone done you a favor and made a youtube video. 
