@@ -238,9 +238,12 @@ def process_prompts():
                 usernames = get_usernames(parsed_subscriptions)
 
                 for username in usernames:
-                    model_id = profile.get_id(headers, username)
-                    do_download_content(
-                        headers, username, model_id, ignore_prompt=True)
+                    try:
+                        model_id = profile.get_id(headers, username)
+                        do_download_content(
+                            headers, username, model_id, ignore_prompt=True)
+                    except Exception as e:
+                        print(f"There was an error with profile {username}.\nWe encountered the following exception: \n\n{e}")
 
     elif result_main_prompt == 1:
         # Like a user's posts
@@ -402,7 +405,6 @@ def main():
     if args.daemon:
         daemon()
     if args.purchased:
-        print("This feature is still under development and may not function correctly if at all.")
         paid_content = paid.scrape_paid()
         paid.download_paid(paid_content)
         sys.exit()

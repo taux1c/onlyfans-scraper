@@ -15,6 +15,10 @@ mainProfile = 'main_profile'
 requestAuth = 'request_auth.json'
 debug = False
 
+# LIST NAMES (IF HARDCODED, MOST WILL BE AUTOMATIC
+
+of_posts_list_name = 'list'
+
 initEP = 'https://onlyfans.com/api2/v2/init'
 
 meEP = 'https://onlyfans.com/api2/v2/users/me'

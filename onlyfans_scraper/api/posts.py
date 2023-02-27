@@ -13,7 +13,7 @@ import httpx
 from ..constants import (
     timelineEP, timelineNextEP,
     timelinePinnedEP,
-    archivedEP, archivedNextEP
+    archivedEP, archivedNextEP, of_posts_list_name
 )
 from ..utils import auth
 
@@ -31,7 +31,7 @@ def scrape_pinned_posts(headers, model_id) -> list:
         r.raise_for_status()
 
 
-def scrape_timeline_posts(headers, model_id, timestamp=0) -> list:
+def scrape_timeline_posts2(headers, model_id, timestamp=0) -> list:
     ep = timelineNextEP if timestamp else timelineEP
     url = ep.format(model_id, timestamp)
 
@@ -49,6 +49,30 @@ def scrape_timeline_posts(headers, model_id, timestamp=0) -> list:
             return posts
         r.raise_for_status()
 
+
+# REWRITE OF THE ABOVE FUNCTION WITH A SECOND SECTION TO HANDLE ADDITIONAL REQUESTS
+def scrape_timeline_posts(headers,model_id,timestamp=0) -> list:
+    ep = timelineNextEP if timestamp else timelineEP
+    url = ep.format(model_id, timestamp)
+
+    with httpx.Client(http2=True, headers=headers) as c:
+        auth.add_cookies(c)
+        c.headers.update(auth.create_sign(url, headers))
+        r = c.get(url, timeout=None)
+        if not r.is_error:
+            posts = r.json()[of_posts_list_name]
+            if 'hasMore' in r.json():
+                hasMore = r.json()['hasMore']
+            else:
+                print('hasMore not in json falling back to legacy mode.')
+                posts = scrape_timeline_posts2(headers,model_id)
+                return posts
+            if not posts:
+                return posts
+            while hasMore:
+                posts += scrape_timeline_posts(
+                    headers, model_id, posts[-1]['postedAtPrecise'])
+                return posts
 
 def scrape_archived_posts(headers, model_id, timestamp=0) -> list:
     ep = archivedNextEP if timestamp else archivedEP
