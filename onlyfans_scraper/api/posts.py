@@ -67,7 +67,7 @@ def scrape_timeline_posts(headers, model_id, max_timestamp=0):
 
             r = c.get(url, timeout=None)
             if not r.is_error:
-                posts_list = r.json()['list']
+                posts_list = r.json()[of_posts_list_name]
                 if posts_list:
                     posts += posts_list
                     max_timestamp = posts[-1]['postedAtPrecise']
