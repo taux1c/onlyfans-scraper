@@ -31,7 +31,7 @@ def scrape_pinned_posts(headers, model_id) -> list:
         r.raise_for_status()
 
 
-def scrape_timeline_posts2(headers, model_id, timestamp=0) -> list:
+def scrape_timeline_posts(headers, model_id, timestamp=0) -> list:
     ep = timelineNextEP if timestamp else timelineEP
     url = ep.format(model_id, timestamp)
 
@@ -51,7 +51,7 @@ def scrape_timeline_posts2(headers, model_id, timestamp=0) -> list:
 
 
 # REWRITE OF THE ABOVE FUNCTION WITH A SECOND SECTION TO HANDLE ADDITIONAL REQUESTS
-def scrape_timeline_posts(headers, model_id, max_timestamp=0):
+def scrape_timeline_posts2(headers, model_id, max_timestamp=0):
     posts = []
 
     # Keep fetching posts until we get an empty list
