@@ -1,3 +1,7 @@
+Disclaimer:
+
+This tool is not affiliated, associated, or partnered with OnlyFans in any way. We are not authorized, endorsed, or sponsored by OnlyFans. All OnlyFans trademarks remain the property of Fenix International Limited.
+
 <h1>Locations</h1>
 
 
