@@ -30,7 +30,9 @@ def scrape_pinned_posts(headers, model_id) -> list:
             return r.json()['list']
         r.raise_for_status()
 
-def scrape_timeline_posts_helper(headers, model_id, timestamp, posts):
+
+
+def scrape_timeline_posts(headers, model_id, timestamp=0) -> list:
     ep = timelineNextEP if timestamp else timelineEP
     url = ep.format(model_id, timestamp)
 
@@ -39,35 +41,14 @@ def scrape_timeline_posts_helper(headers, model_id, timestamp, posts):
         c.headers.update(auth.create_sign(url, headers))
 
         r = c.get(url, timeout=None)
-        if r.is_error:
-            r.raise_for_status()
-        new_posts = r.json()['list']
-        if not new_posts:
+        if not r.is_error:
+            posts = r.json()['list']
+            if not posts:
+                return posts
+            posts += scrape_timeline_posts(
+                headers, model_id, posts[-1]['postedAtPrecise'])
             return posts
-
-        posts.extend(new_posts)
-        return scrape_timeline_posts_helper(headers, model_id, new_posts[-1]['postedAtPrecise'], posts)
-
-def scrape_timeline_posts(headers, model_id, timestamp=0) -> list:
-    return scrape_timeline_posts_helper(headers, model_id, timestamp, [])
-
-# def scrape_timeline_posts(headers, model_id, timestamp=0) -> list:
-#     ep = timelineNextEP if timestamp else timelineEP
-#     url = ep.format(model_id, timestamp)
-#
-#     with httpx.Client(http2=True, headers=headers) as c:
-#         auth.add_cookies(c)
-#         c.headers.update(auth.create_sign(url, headers))
-#
-#         r = c.get(url, timeout=None)
-#         if not r.is_error:
-#             posts = r.json()['list']
-#             if not posts:
-#                 return posts
-#             posts += scrape_timeline_posts(
-#                 headers, model_id, posts[-1]['postedAtPrecise'])
-#             return posts
-#         r.raise_for_status()
+        r.raise_for_status()
 
 
 
