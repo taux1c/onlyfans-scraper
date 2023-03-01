@@ -43,6 +43,7 @@ def scrape_timeline_posts(headers, model_id, timestamp=0) -> list:
         if not r.is_error:
             for x in r.json():
                 print(f"\n\n{x}")
+                print(r.json()[x])
             posts = r.json()['list']
             if not posts:
                 return posts
@@ -51,7 +52,15 @@ def scrape_timeline_posts(headers, model_id, timestamp=0) -> list:
             return posts
         r.raise_for_status()
 
+# REWRITE OF ABOVE FUNCTION
 
+def scrape_timeline_posts2(headers, model_id, timestamp=0) -> list:
+    ep = timelineNextEP if timestamp else timelineEP
+    url = ep.format(model_id, timestamp)
+
+    with httpx.Client(http2=True, headers=headers) as c:
+        auth.add_cookies(c)
+        c.headers.update(auth.create_sign(url, headers))
 
 
 
