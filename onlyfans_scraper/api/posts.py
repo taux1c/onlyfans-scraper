@@ -31,7 +31,7 @@ def scrape_pinned_posts(headers, model_id) -> list:
         r.raise_for_status()
 
 
-def scrape_timeline_posts2(headers, model_id, timestamp=0) -> list:
+def scrape_timeline_posts(headers, model_id, timestamp=0) -> list:
     ep = timelineNextEP if timestamp else timelineEP
     url = ep.format(model_id, timestamp)
 
@@ -39,35 +39,19 @@ def scrape_timeline_posts2(headers, model_id, timestamp=0) -> list:
         auth.add_cookies(c)
         c.headers.update(auth.create_sign(url, headers))
 
-        r = c.get(url, timeout=None)
-        print(r.json())
-
-
-# REWRITE OF THE ABOVE FUNCTION WITH A SECOND SECTION TO HANDLE ADDITIONAL REQUESTS WITHOUT RECURSION AND FIGURE OUT LIST NAME AUTOMATICALLY.
-def scrape_timeline_posts(headers, model_id, max_timestamp=0):
-    ep = timelineNextEP if timestamp else timelineEP
-    url = ep.format(model_id, timestamp)
-    with httpx.Client(http2=True, headers=headers) as c:
-        auth.add_cookies(c)
-        c.headers.update(auth.create_sign(url, headers))
         r = c.get(url, timeout=None)
         if not r.is_error:
-            for x in r.json():
-                if isinstance(r.json()[x],list):
-                    the_list = r.json()[x]
-        if 'hasMore' in r.json():
-            has_more = r.json()['hasMore']
-        else:
-            print("Onlyfans has changed something! Sound the alarm!")
-            return
-        posts = r.json()[the_list]
-        if not posts:
-            return posts
-        while has_more:
+            print(r.json())
+            posts = r.json()['list']
+            if not posts:
+                return posts
             posts += scrape_timeline_posts(
                 headers, model_id, posts[-1]['postedAtPrecise'])
             return posts
         r.raise_for_status()
+
+
+
 
 
 def scrape_archived_posts(headers, model_id, timestamp=0) -> list:
