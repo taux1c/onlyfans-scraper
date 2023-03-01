@@ -42,7 +42,9 @@ def scrape_timeline_posts(headers, model_id, timestamp=0) -> list:
         r = c.get(url, timeout=None)
         if not r.is_error:
             posts = r.json()['list']
-            print(posts.join("\n\n"))
+            for item in posts:
+                print(item)
+                print("\n\n")
             if not posts:
                 return posts
             posts += scrape_timeline_posts(
