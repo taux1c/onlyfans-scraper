@@ -42,10 +42,13 @@ def scrape_timeline_posts(headers, model_id, timestamp=0) -> list:
         r = c.get(url, timeout=None)
         if not r.is_error:
             posts = r.json()['list']
+            hasMore = r.json()['hasMore']
             if not posts:
                 return posts
-            posts += scrape_timeline_posts(
-                headers, model_id, posts[-1]['postedAtPrecise'])
+            while hasMore:
+                posts_data = scrape_archived_posts2(headers,model_id,posts[-1]['postedAtPrecise'])
+                posts += posts_data.get('posts')
+                hasMore = posts_data.get('hasMore')
             return posts
         r.raise_for_status()
 
@@ -53,8 +56,8 @@ def scrape_timeline_posts(headers, model_id, timestamp=0) -> list:
 
 
 
-def scrape_archived_posts(headers, model_id, timestamp=0) -> list:
-    ep = archivedNextEP if timestamp else archivedEP
+def scrape_archived_posts2(headers, model_id, timestamp=0) -> dict:
+    ep = timelineNextEP if timestamp else timelineEP
     url = ep.format(model_id, timestamp)
 
     with httpx.Client(http2=True, headers=headers) as c:
@@ -64,12 +67,9 @@ def scrape_archived_posts(headers, model_id, timestamp=0) -> list:
         r = c.get(url, timeout=None)
         if not r.is_error:
             posts = r.json()['list']
-            if not posts:
-                return posts
-            posts += scrape_archived_posts(
-                headers, model_id, posts[-1]['postedAtPrecise'])
-            return posts
-        r.raise_for_status()
+            post_data = {'hasMore':r.json()['hasMore'],'posts':posts}
+            return post_data
+
 
 
 def parse_posts(posts: list):
