@@ -51,22 +51,6 @@ def scrape_timeline_posts(headers, model_id, timestamp=0) -> list:
 
 # REWRITE OF ABOVE FUNCTION
 
-def scrape_timeline_posts2(headers, model_id, timestamp=0) -> list:
-    ep = timelineNextEP if timestamp else timelineEP
-    url = ep.format(model_id, timestamp)
-
-    with httpx.Client(http2=True, headers=headers) as c:
-        auth.add_cookies(c)
-        c.headers.update(auth.create_sign(url, headers))
-        r = c.get(url, timeout=None)
-        if not r.is_error:
-            hasMore = r.json()['hasMore']
-            for item in r.json():
-                if isinstance(r.json()[item],list):
-                    post_list = r.json()[item]
-            while hasMore:
-                pass
-
 
 
 def scrape_archived_posts(headers, model_id, timestamp=0) -> list:
