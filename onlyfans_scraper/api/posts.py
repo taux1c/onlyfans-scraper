@@ -50,31 +50,32 @@ def scrape_timeline_posts(headers, model_id, timestamp=0) -> list:
         r.raise_for_status()
 
 
-# REWRITE OF THE ABOVE FUNCTION WITH A SECOND SECTION TO HANDLE ADDITIONAL REQUESTS
+# REWRITE OF THE ABOVE FUNCTION WITH A SECOND SECTION TO HANDLE ADDITIONAL REQUESTS WITHOUT RECURSION AND FIGURE OUT LIST NAME AUTOMATICALLY.
 def scrape_timeline_posts2(headers, model_id, max_timestamp=0):
-    posts = []
+    ep = timelineNextEP if timestamp else timelineEP
+    url = ep.format(model_id, timestamp)
+    with httpx.Client(http2=True, headers=headers) as c:
+        auth.add_cookies(c)
+        c.headers.update(auth.create_sign(url, headers))
+        r = c.get(url, timeout=None)
+        if not r.is_error:
+            for x in r.json():
+                if isinstance(r.json()[x],list):
+                    the_list = r.json()[x]
+        if 'hasMore' in r.json():
+            has_more = r.json()['hasMore']
+        else:
+            print("Onlyfans has changed something! Sound the alarm!")
+            return
+        posts = r.json()[the_list]
+        if not posts:
+            return posts
+        while has_more:
+            posts += scrape_timeline_posts(
+                headers, model_id, posts[-1]['postedAtPrecise'])
+            return posts
+        r.raise_for_status()
 
-    # Keep fetching posts until we get an empty list
-    while True:
-        # Determine the API endpoint to call based on the timestamp
-        ep = timelineNextEP if max_timestamp else timelineEP
-        url = ep.format(model_id, max_timestamp)
-
-        # Make the API call
-        with httpx.Client(http2=True, headers=headers) as c:
-            auth.add_cookies(c)
-            c.headers.update(auth.create_sign(url, headers))
-
-            r = c.get(url, timeout=None)
-            if not r.is_error:
-                posts_list = r.json()[of_posts_list_name]
-                if posts_list:
-                    posts += posts_list
-                    max_timestamp = posts[-1]['postedAtPrecise']
-                else:
-                    break
-            else:
-                r.raise_for_status()
 
 def scrape_archived_posts(headers, model_id, timestamp=0) -> list:
     ep = archivedNextEP if timestamp else archivedEP
