@@ -42,9 +42,8 @@ def scrape_timeline_posts(headers, model_id, timestamp=0) -> list:
         r = c.get(url, timeout=None)
         if not r.is_error:
             for x in r.json():
-                print(f"\n\n{x}")
-                print(r.json()[x])
             posts = r.json()['list']
+            print(posts.join("\n\n"))
             if not posts:
                 return posts
             posts += scrape_timeline_posts(
@@ -61,6 +60,14 @@ def scrape_timeline_posts2(headers, model_id, timestamp=0) -> list:
     with httpx.Client(http2=True, headers=headers) as c:
         auth.add_cookies(c)
         c.headers.update(auth.create_sign(url, headers))
+        r = c.get(url, timeout=None)
+        if not r.is_error:
+            hasMore = r.json()['hasMore']
+            for item in r.json():
+                if isinstance(r.json()[item],list):
+                    post_list = r.json()[item]
+            while hasMore:
+                pass
 
 
 
