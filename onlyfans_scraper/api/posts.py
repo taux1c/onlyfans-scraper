@@ -40,9 +40,6 @@ def scrape_timeline_posts(headers, model_id, timestamp=0) -> list:
 
         r = c.get(url, timeout=None)
         if not r.is_error:
-            for x in r.json():
-                print(f"\n\n{x}")
-                print(r.json()[x])
             posts = r.json()['list']
             if not posts:
                 return posts
