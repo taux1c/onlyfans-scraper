@@ -40,14 +40,7 @@ def scrape_timeline_posts2(headers, model_id, timestamp=0) -> list:
         c.headers.update(auth.create_sign(url, headers))
 
         r = c.get(url, timeout=None)
-        if not r.is_error:
-            posts = r.json()['list']
-            if not posts:
-                return posts
-            posts += scrape_timeline_posts(
-                headers, model_id, posts[-1]['postedAtPrecise'])
-            return posts
-        r.raise_for_status()
+        print(r.json())
 
 
 # REWRITE OF THE ABOVE FUNCTION WITH A SECOND SECTION TO HANDLE ADDITIONAL REQUESTS WITHOUT RECURSION AND FIGURE OUT LIST NAME AUTOMATICALLY.
