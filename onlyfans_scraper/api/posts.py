@@ -30,7 +30,6 @@ def scrape_pinned_posts(headers, model_id) -> list:
             return r.json()['list']
         r.raise_for_status()
 
-
 def scrape_timeline_posts(headers, model_id, timestamp=0) -> list:
     ep = timelineNextEP if timestamp else timelineEP
     url = ep.format(model_id, timestamp)
@@ -41,14 +40,14 @@ def scrape_timeline_posts(headers, model_id, timestamp=0) -> list:
 
         r = c.get(url, timeout=None)
         if not r.is_error:
+            for x in r.json():
+                print(f"\n\n{x}")
+                print(r.json()[x])
             posts = r.json()['list']
-            hasMore = r.json()['hasMore']
             if not posts:
                 return posts
-            while hasMore:
-                posts_data = scrape_archived_posts2(headers,model_id,posts[-1]['postedAtPrecise'])
-                posts += posts_data.get('posts')
-                hasMore = posts_data.get('hasMore')
+            posts += scrape_timeline_posts(
+                headers, model_id, posts[-1]['postedAtPrecise'])
             return posts
         r.raise_for_status()
 
