@@ -44,8 +44,6 @@ def scrape_timeline_posts(headers, model_id, timestamp=0) -> list:
             posts = r.json()['list']
             if not posts:
                 return posts
-            with open('test.txt', 'w') as f:
-                f.write(posts)
             posts += scrape_timeline_posts(
                 headers, model_id, posts[-1]['postedAtPrecise'])
             return posts
