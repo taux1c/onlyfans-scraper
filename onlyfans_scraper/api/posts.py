@@ -44,8 +44,9 @@ def scrape_timeline_posts(headers, model_id, timestamp=0) -> list:
             posts = r.json()['list']
             if not posts:
                 return posts
-            posts += scrape_timeline_posts(
-                headers, model_id, posts[-1]['postedAtPrecise'])
+            while r.json()['hasMore']:
+                posts += scrape_timeline_posts(
+                    headers, model_id, posts[-1]['postedAtPrecise'])
             return posts
         r.raise_for_status()
 
