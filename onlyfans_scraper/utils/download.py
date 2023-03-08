@@ -11,7 +11,7 @@ import asyncio
 import math
 import pathlib
 import platform
-
+import sys
 
 import httpx
 from tqdm.asyncio import tqdm
@@ -40,7 +40,7 @@ async def process_urls(headers, username, model_id, urls):
             try:
                 dir = pathlib.Path(save_location)
             except:
-                print("Unable to find save location.")
+                print(f"Unable to find save location. Using current working directory. ({pathlib.Path.cwd()})")
         else:
             dir = pathlib.Path.cwd()
         try:
@@ -48,7 +48,7 @@ async def process_urls(headers, username, model_id, urls):
             path.mkdir(exist_ok=True, parents=True)
         except:
             print("Error saving to save directory, check the directory and make sure correct permissions have been issued.")
-
+            sys.exit()
         file_size_limit = config.get('file_size_limit')
 
         # Added pool limit:
