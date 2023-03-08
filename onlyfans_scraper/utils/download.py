@@ -37,11 +37,17 @@ async def process_urls(headers, username, model_id, urls):
 
         save_location = config.get('save_location')
         if save_location:
-            dir = pathlib.Path(save_location)
+            try:
+                dir = pathlib.Path(save_location)
+            except:
+                print("Unable to find save location.")
         else:
             dir = pathlib.Path.cwd()
-        path = dir / username
-        path.mkdir(exist_ok=True, parents=True)
+        try:
+            path = dir / username
+            path.mkdir(exist_ok=True, parents=True)
+        except:
+            print("Error saving to save directory, check the directory and make sure correct permissions have been issued.")
 
         file_size_limit = config.get('file_size_limit')
 
