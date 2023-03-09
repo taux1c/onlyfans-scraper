@@ -20,7 +20,7 @@ https://www.youtube.com/watch?v=wmC9HOeswvw
 
 
 This is a theoritical program only and is for educational purposes. If you choose to use it then it may or may not work. You solely accept full responsability and indemnify the creator, hostors, contributors and all other involved persons from any any all responsability.
-A command-line program to download media, like and unlike posts, and more from creators on OnlyFans.
+A command-line program to download media, like and unlike posts, and more from creators on OnlyFans. In addition if you do use this program please do not use this program to re-distribute content.
 
 <img src="https://raw.githubusercontent.com/taux1c/onlyfans-scraper/main/media/example.png" width="550">
 
