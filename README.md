@@ -27,13 +27,20 @@ A command-line program to download media, like and unlike posts, and more from c
 ## Installation
 
 Windows: 
+```
+pip install onlyfans-scraper
+```
+or 
 
 ```
 pip install git+https://github.com/taux1c/onlyfans-scraper
 ```
 
 If you're on macOS/Linux, then do this instead:
-
+```
+pip3 install onlyfans-scraper
+```
+or
 ```
 pip3 install git+https://github.com/taux1c/onlyfans-scraper
 ```
