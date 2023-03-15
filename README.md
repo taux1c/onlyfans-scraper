@@ -187,4 +187,4 @@ If you run into trouble try the discord, careful though we do bite. If you open 
         404 page not found or any other 404 error. - The post or profile can't be found. The user has been suspended or deleted or the post was removed and isn't completely deleted yet. No fix for this other than unsubscribing from the user. Do not open an issue for it.
     </li>
 </ol>
-<h3>Honestly unless you're one of my subscribers or support the project in some mannor your suggestions are generally ignored.</h3>
+<h3>Honestly unless you're one of my subscribers or support the project in some form your suggestions are generally ignored.</h3>
