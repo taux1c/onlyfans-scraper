@@ -190,6 +190,7 @@ If you run into trouble try the discord, careful though we do bite. If you open 
 <h3>Honestly unless you're one of my subscribers or support the project in some form your suggestions are generally ignored.</h3>
 
 </ol>
+<hr width="100%">
 <h3>SOCIALS</h3>
 <ol>
     <li>
