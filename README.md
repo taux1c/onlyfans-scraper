@@ -6,13 +6,6 @@
     <li>
         This is a theoritical program only and is for educational purposes. If you choose to use it then it may or may not work. You solely accept full responsability and indemnify the creator, hostors, contributors and all other involved persons from any any all responsability.
     </li>
-</ol>
-<h3>SOCIALS</h3>
-<ol>
-    <li>
-        Discord: https://discord.gg/4DSJ5dvjwk
-    </li>
-</ol>
 
 
 <h3>
@@ -195,3 +188,11 @@ If you run into trouble try the discord, careful though we do bite. If you open 
     </li>
 </ol>
 <h3>Honestly unless you're one of my subscribers or support the project in some form your suggestions are generally ignored.</h3>
+
+</ol>
+<h3>SOCIALS</h3>
+<ol>
+    <li>
+        Discord: https://discord.gg/4DSJ5dvjwk
+    </li>
+</ol>
