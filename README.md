@@ -172,9 +172,19 @@ Users
 
 Then the path you enter should be `/Users/home/.sites/OnlyFans/melodyjai/Metadata`. The program will detect the .db files in the directory and then ask you for the username to whom those .db files belong. The program will then move the relevant data over.
 
-## Bugs/Issues/Suggestions
+<h1> Bugs/Issues/Suggestions </h1>
 
-If you run into any trouble while using this script, or if you're confused on how to get something running, feel free to [open an issue](https://github.com/taux1c/onlyfans-scraper/issues/new) or [open a discussion](https://github.com/taux1c/onlyfans-scraper/discussions/new). I don't bite :D
+If you run into trouble try the discord, careful though we do bite. If you open an issue for any of the following you will be banned from opening future issues. These are not issues they are operator error.
 
-If you would like a feature added to the program or have some ideas, [start a discussion](https://github.com/taux1c/onlyfans-scraper/discussions/new)!
-
+<ol>
+    <li>
+        Status Down - This means that your auth details are bad, keep trying.
+    </li>
+    <li>
+        onlyfans-scraper command not found - This means that you have not added the path to your directory. You will have to look this up on your own with google.
+    </li>
+    <li>
+        404 page not found or any other 404 error. - The post or profile can't be found. The user has been suspended or deleted or the post was removed and isn't completely deleted yet. No fix for this other than unsubscribing from the user. Do not open an issue for it.
+    </li>
+</ol>
+<h3>Honestly unless you're one of my subscribers or support the project in some mannor your suggestions are generally ignored.</h3>
