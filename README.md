@@ -1,26 +1,19 @@
-<h3>Disclaimer added at the request of onlyfans legal council.:</h3>
+<h3>DISCLAIMERS:</h3>
+<ol>
+    <li>
+        This tool is not affiliated, associated, or partnered with OnlyFans in any way. We are not authorized, endorsed, or sponsored by OnlyFans. All OnlyFans trademarks remain the property of Fenix International Limited.
+    </li>
+    <li>
+        This is a theoritical program only and is for educational purposes. If you choose to use it then it may or may not work. You solely accept full responsability and indemnify the creator, hostors, contributors and all other involved persons from any any all responsability.
+    </li>
+</ol>
 
-This tool is not affiliated, associated, or partnered with OnlyFans in any way. We are not authorized, endorsed, or sponsored by OnlyFans. All OnlyFans trademarks remain the property of Fenix International Limited.
+<h3>
+    Description:
+    </h3>
+    A command-line program to download media (make a print to file), like and unlike posts, and more from creators on OnlyFans. In addition if you do use this program please do not use this program to re-distribute content.
+</h3>
 
-<h1>Locations</h1>
-
-
-
-
-Discord Server: https://discord.gg/SFmPxnfZ5a
-
-
-If you're too lazy to read the rest of this someone done you a favor and made a youtube video. 
-https://www.youtube.com/watch?v=wmC9HOeswvw
-
-
-<img src="https://raw.githubusercontent.com/taux1c/onlyfans-scraper/main/media/icon.png" width="100" align="right">
-
-# onlyfans-scraper
-
-
-This is a theoritical program only and is for educational purposes. If you choose to use it then it may or may not work. You solely accept full responsability and indemnify the creator, hostors, contributors and all other involved persons from any any all responsability.
-A command-line program to download media, like and unlike posts, and more from creators on OnlyFans. In addition if you do use this program please do not use this program to re-distribute content.
 
 <img src="https://raw.githubusercontent.com/taux1c/onlyfans-scraper/main/media/example.png" width="550">
 
