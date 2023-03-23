@@ -194,6 +194,6 @@ If you run into trouble try the discord, careful though we do bite. If you open 
 <h3>SOCIALS</h3>
 <ol>
     <li>
-        Discord: https://discord.gg/4DSJ5dvjwk
+        Discord: Closed - Not accepting new members.
     </li>
 </ol>
