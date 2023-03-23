@@ -370,10 +370,10 @@ def daemon():
 def main():
     if platform.system == 'Windows':
         os.system('color')
-    try:
-        webbrowser.open(donateEP)
-    except:
-        pass
+#     try:
+#         webbrowser.open(donateEP)
+#     except:
+#         pass
 
 
     parser = argparse.ArgumentParser()
