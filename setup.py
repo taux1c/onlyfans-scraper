@@ -27,7 +27,11 @@ main = os.path.abspath(os.path.dirname(__file__))
 with open(os.path.join(main, 'requirements.txt'), 'r', encoding='utf-8') as f:
     requirements = f.read().splitlines()
     if platform.system() != 'Windows':
-        requirements.remove('win32_setctime')
+        # List of requirements that aren't needed for linux
+        remove = ['win32_setctime']
+        for requirement in requirements:
+            requirements.remove(requirement)
+
 
 about = {}
 with open(os.path.join(main, 'onlyfans_scraper', '__version__.py'), 'r', encoding='utf-8') as f:
