@@ -1,8 +1,5 @@
 <h1>This program is no longer maintained and does not work!</h1>
-<h3>The link below is to a working (as of this update) fork. However it has been modified a lot
-and several people have complained that it's just too much.</h3>
 
-https://github.com/datawhores/onlyfans-scraper
 
 
 <hr>
