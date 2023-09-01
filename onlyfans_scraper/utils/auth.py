@@ -140,6 +140,7 @@ def create_sign(link, headers):
 
     final_sign = content['format'].format(sha_1_sign, abs(checksum))
 
+
     headers.update(
         {
             'sign': final_sign,
