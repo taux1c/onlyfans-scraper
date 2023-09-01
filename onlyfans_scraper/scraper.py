@@ -25,6 +25,7 @@ from .utils import auth, config, download, profiles, prompts
 import webbrowser
 from revolution import Revolution
 from .utils.nap import nap_or_sleep
+from .modules import get_list
 
 
 # @need_revolution("Getting messages...")
@@ -291,6 +292,11 @@ def process_prompts():
     elif result_main_prompt == 7:
         # Display  `Profiles` menu
         result_profiles_prompt = prompts.profiles_prompt()
+        print('This feature has been retired.')
+    elif result_main_prompt == 8:
+        export_file = input('Enter a name for the output excel file: ')
+        get_list(export_file = export_file)
+
 
         if result_profiles_prompt == 0:
             # Change profiles

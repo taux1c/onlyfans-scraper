@@ -48,6 +48,8 @@ DC_EP = 'https://raw.githubusercontent.com/DATAHOARDERS/dynamic-rules/main/onlyf
 
 donateEP = "https://www.buymeacoffee.com/taux1c"
 
+lists_EP = "https://onlyfans.com/api2/v2/lists?offset={}&skip_users=all&limit=10&format=infinite"
+
 purchased_contentEP = "https://onlyfans.com/api2/v2/posts/paid?limit=10&skip_users=all&format=infinite&offset={}"
 
 mainPromptChoices = {
@@ -57,7 +59,9 @@ mainPromptChoices = {
     'Migrate an old database': 3,
     'Edit `auth.json` file': 4,
     'Profiles': 5,
-    'Download Paid Content': 6
+    'Download Paid Content': 6,
+    'Retired Feature - Do not use': 7,
+    'Export Saved Lists': 8,
 }
 usernameOrListChoices = {
     'Print a list of my subscriptions': 0,
