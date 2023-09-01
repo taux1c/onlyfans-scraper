@@ -25,7 +25,7 @@ from .utils import auth, config, download, profiles, prompts
 import webbrowser
 from revolution import Revolution
 from .utils.nap import nap_or_sleep
-from modules import get_list
+from modules.lists import get_list
 
 
 # @need_revolution("Getting messages...")
