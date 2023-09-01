@@ -1,8 +1,8 @@
 
-from ..constants import lists_EP
+from onlyfans_scraper.constants import lists_EP
 import pandas
 import requests
-from ..utils import auth
+from onlyfans_scraper.utils import auth
 import asyncio
 hasMore_name = ""
 list_name = ""

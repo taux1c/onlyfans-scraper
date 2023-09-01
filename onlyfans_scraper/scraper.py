@@ -9,23 +9,18 @@ r"""
 
 import argparse
 import asyncio
-import datetime
 import os
 import sys
 import platform
-from random import randint, choice
 from time import sleep
-from datetime import datetime, timedelta
 
-from .constants import donateEP
 from .api import init, highlights, me, messages, posts, profile, subscriptions, paid
 from .db import operations
 from .interaction import like
 from .utils import auth, config, download, profiles, prompts
-import webbrowser
 from revolution import Revolution
 from .utils.nap import nap_or_sleep
-from modules.lists import get_list
+from onlyfans_scraper.api.lists import get_list
 
 
 # @need_revolution("Getting messages...")
