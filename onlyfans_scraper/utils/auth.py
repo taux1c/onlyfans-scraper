@@ -127,7 +127,7 @@ def create_sign(link, headers):
     static_param = content['static_param']
 
     a = [static_param, time2, path, headers['user-id']]
-    msg = "\n".join(a)
+    msg = "".join(a)
 
     message = msg.encode("utf-8")
     hash_object = hashlib.sha1(message)
